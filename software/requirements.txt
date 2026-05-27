@@ -1,0 +1,18 @@
+# 4模式机械键盘 "幻想键盘" Python工具依赖
+# 4-Mode Mechanical Keyboard "FantasyKB" Python Tool Dependencies
+#
+# pip install -r requirements.txt
+#
+# Last updated: 2026-05-27
+
+# 测试框架 | Testing
+pytest>=7.0.0
+
+# YAML配置解析 | YAML config parsing
+pyyaml>=6.0
+
+# 数值计算 (FOC模拟) | Numerical computation
+numpy>=1.24.0
+
+# 格式化输出 | Pretty printing
+rich>=13.0.0

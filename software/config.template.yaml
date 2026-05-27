@@ -1,0 +1,108 @@
+# 4模式机械键盘 "幻想键盘" 配置模板
+# 4-Mode Mechanical Keyboard "FantasyKB" Configuration Template
+#
+# 复制为 config.yaml 后修改 | Copy to config.yaml and modify
+#
+# Last updated: 2026-05-27
+
+# ===== 键盘硬件 | Keyboard Hardware =====
+keyboard:
+  name: "FantasyKB 4-Mode Keyboard"
+  layout: "full_75"
+  total_keys: 75
+  shift_registers: 10  # 74HC165芯片数量
+
+# ===== 74HC165 移位寄存器扫描 | Shift Register Scanner =====
+scanner:
+  num_chips: 10
+  spi_clk: "GPIO4"
+  spi_miso: "GPIO5"
+  spi_cs: "GPIO6"
+  pl_pin: "GPIO7"
+  debounce_ms: 5
+  scan_rate_hz: 1000
+
+# ===== GC9A01 圆形LCD | Round LCD Display =====
+display:
+  type: "GC9A01"
+  width: 240
+  height: 240
+  rotation: 0
+  spi_clk: "GPIO10"
+  spi_mosi: "GPIO11"
+  cs_pin: "GPIO12"
+  dc_pin: "GPIO13"
+  res_pin: "GPIO14"
+  bl_pin: "GPIO15"
+
+# ===== WS2812B RGB LED =====
+rgb:
+  type: "WS2812B"
+  count: 95
+  data_pin: "GPIO8"
+  max_brightness: 128
+
+# ===== AS5047P 磁编码器 | Magnetic Encoder =====
+encoder:
+  spi_clk: "GPIO18"
+  spi_mosi: "GPIO19"
+  spi_miso: "GPIO20"
+  cs_pin: "GPIO21"
+
+# ===== TMC6300 FOC电机 | FOC Motor =====
+motor:
+  pole_pairs: 7
+  voltage_limit: 5.0
+  pid_p: 0.5
+  pid_i: 0.01
+  pid_d: 0.0
+
+# ===== USB HID =====
+hid:
+  max_keys: 6  # Boot协议最大同时按键数
+
+# ===== I2S音频 | Audio =====
+audio:
+  sample_rate: 16000
+  channels: 2
+  bit_depth: 16
+  i2s_bclk: "GPIO41"
+  i2s_ws: "GPIO42"
+  i2s_sdi: "GPIO39"
+  i2s_sdo: "GPIO40"
+
+# ===== 无线通信 | Wireless =====
+wireless:
+  default_mode: "usb"  # usb / ble / wifi / esp_now
+  auto_switch: true
+  ble_name: "FantasyKB"
+  wifi_ssid: ""
+  esp_now_channel: 1
+
+# ===== 电源 | Power =====
+power:
+  battery_capacity_mah: 3000
+  charging_ic: "TP4056"
+  dcdc_5v: "HX3608"
+  ldo_3v3: "ME6217C33M5G"
+
+# ===== I2C总线 | I2C Bus =====
+i2c:
+  scl: "GPIO9"
+  sda: "GPIO45"
+  devices:
+    - name: "ES7210 (ADC)"
+      address: "0x40"
+    - name: "ES8311 (DAC)"
+      address: "0x18"
+
+# ===== 磁吸扩展端口 | Magnetic Expansion =====
+expansion:
+  ports: 4
+  protocol: "IIC"
+  auto_detect: true
+
+# ===== 测试 | Test =====
+test:
+  serial_port: "COM3"
+  baud_rate: 115200
