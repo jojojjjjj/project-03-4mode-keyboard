@@ -1,8 +1,15 @@
 # 4模式机械键盘 "幻想键盘" | 4-Mode Mechanical Keyboard "FantasyKB"
 
-> **本项目基于开源项目 [承载我所有幻想的键盘](https://oshwhub.com/ran-pang/multifunctional-keyboard) 改编，已获得原作者授权用于教学目的。**
+> **本项目基于开源项目 [承载我所有幻想的键盘](https://oshwhub.com/ran-pang/multifunctional-keyboard)（原作者：[蓝星多面体](https://space.bilibili.com/3546587666057417)）改编，已获得原作者授权用于教学目的。**
 >
-> This project is adapted from the open-source project ["The Keyboard That Carries All My Fantasies"](https://oshwhub.com/ran-pang/multifunctional-keyboard), used with the original author's permission for educational purposes.
+> **This project is adapted from the open-source project ["The Keyboard That Carries All My Fantasies"](https://oshwhub.com/ran-pang/multifunctional-keyboard) by [蓝星多面体](https://space.bilibili.com/3546587666057417), used with the original author's permission for educational purposes.**
+
+| 链接 Link | 说明 Description |
+|-----------|-----------------|
+| **B站原作演示视频** | [bilibili.com/video/BV16i421Y7JJ](https://www.bilibili.com/video/BV16i421Y7JJ/?spm_id_from=333.788.top_right_bar_window_custom_collection.content.click&vd_source=6140074911db12a31084ad734129ee49) |
+| **B站完整演示视频** | [bilibili.com/video/BV1Nx4y1t7gE](https://www.bilibili.com/video/BV1Nx4y1t7gE) |
+| **OSHWHUB 开源工程（PCB/原理图）** | [oshwhub.com/ran-pang/multifunctional-keyboard](https://oshwhub.com/ran-pang/multifunctional-keyboard) |
+| **原作者 B站主页** | [space.bilibili.com/3546587666057417](https://space.bilibili.com/3546587666057417) |
 
 ---
 
