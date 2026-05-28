@@ -1,5 +1,7 @@
 # 第二周进度汇报 | Week 2 Check-in Report
 
+**提交截止 | Deadline:** Day 10 结束前 | Before end of Day 10
+
 ## 基本信息 | Basic Information
 
 | 项目 Item | 填写 Fill In |
@@ -13,16 +15,16 @@
 
 ## 一、第二周学习总结 | Weekly Learning Summary
 
-> 请用 500 字以上总结第二周（Day 5-8）的学习内容和收获。
-> Summarize your learning and gains this week (Day 5-8) in 500+ words.
+> 请用 500 字以上总结第二周（Day 6-10）的学习内容和收获。
+> Summarize your learning and gains this week (Day 6-10) in 500+ words.
 
-### 1.1 PCB 设计心得 | PCB Design Experience
+### 1.1 无线通信心得 | Wireless Communication
 
-（分享你在使用嘉立创 EDA 过程中的体会，包括原理图绘制和 PCB 布局的收获）
+（分享你在 BLE、WiFi、ESP-NOW 三种无线模式开发中的体会）
 
-### 1.2 QMK 固件学习心得 | QMK Firmware Learning
+### 1.2 RGB 灯效与电机控制 | RGB & Motor Control
 
-（分享你对 QMK 固件架构的理解，以及编写 keymap.c 的体会）
+（分享你对 WS2812B 协议和 FOC 电机控制的理解）
 
 ### 1.3 与第一周的对比 | Compared to Week 1
 
@@ -30,51 +32,48 @@
 
 ---
 
-## 二、PCB 设计总结 | PCB Design Summary
+## 二、无线通信总结 | Wireless Communication Summary
 
-### 2.1 设计思路 | Design Rationale
-
-（说明你的原理图为什么这样设计，元件为什么这样布局）
-
-### 2.2 设计亮点 | Design Highlights
-
-（你对自己 PCB 设计最满意的地方）
-
-### 2.3 设计不足 | Design Improvements Needed
-
-（如果重新设计，你会改进哪些地方？）
-
-### 2.4 PCB 参数 | PCB Specifications
-
-| 参数 Parameter | 值 Value |
-|---|---|
-| 板子尺寸 Board Size | mm x mm |
-| 层数 Layers | |
-| 板厚 Thickness | |
-| 铜厚 Copper Weight | |
-| 阻焊颜色 Solder Mask | |
-| DRC 结果 DRC Result | |
-
----
-
-## 三、QMK 固件总结 | QMK Firmware Summary
-
-### 3.1 文件结构理解 | File Structure Understanding
-
-（用自己的话解释 keyboard.json、config.h、rules.mk、keymap.c 各自的作用）
-
-### 3.2 键位设计 | Keymap Design
-
-（说明你的键位映射为什么这样设计，每层的功能分配逻辑）
-
-### 3.3 编译结果 | Compilation Result
+### 2.1 BLE 蓝牙键盘 | BLE Keyboard
 
 | 项目 Item | 状态 Status |
 |---|---|
-| 编译是否成功 | [ ] 是 [ ] 否 |
-| 固件文件大小 | KB |
-| 编译警告数量 | 个 |
-| 启用的功能模块 | |
+| BLE 初始化成功 | [ ] 是 [ ] 否 |
+| 配对成功 | [ ] 是 [ ] 否 |
+| 按键能发送到手机/电脑 | [ ] 是 [ ] 否 |
+| 延迟感受 | |
+
+### 2.2 WiFi 键盘 | WiFi Keyboard
+
+| 项目 Item | 状态 Status |
+|---|---|
+| WiFi 连接成功 | [ ] 是 [ ] 否 |
+| 接收端程序工作 | [ ] 是 [ ] 否 |
+| 按键能通过 WiFi 发送 | [ ] 是 [ ] 否 |
+
+### 2.3 ESP-NOW 2.4GHz | ESP-NOW
+
+| 项目 Item | 状态 Status |
+|---|---|
+| ESP-NOW 初始化成功 | [ ] 是 [ ] 否 |
+| 配对通信成功 | [ ] 是 [ ] 否 |
+| 延迟测试结果 | ms |
+
+---
+
+## 三、子系统总结 | Subsystem Summary
+
+### 3.1 WS2812B RGB 灯效
+
+（你实现了哪些灯效？遇到什么问题？）
+
+### 3.2 FOC 无刷电机旋钮
+
+（对 SimpleFOC 和 AS5047P 磁编码器的理解）
+
+### 3.3 LVGL 旋钮界面
+
+（对 LVGL 嵌入式 GUI 的初步认识）
 
 ---
 
@@ -94,28 +93,22 @@
 
 ---
 
-## 五、最终展示计划 | Final Presentation Plan
+## 五、PCB 设计准备 | PCB Design Preparation
 
-> 说明你在 Day 12 展示中计划展示哪些内容。
-> Describe what you plan to show on Day 12.
+> 说明你对 Day 11-15 PCB 设计的思考和准备。
+> Describe your thoughts and preparation for PCB design (Day 11-15).
 
-### 5.1 计划展示的功能 | Planned Features to Demo
+### 5.1 对 12 块 PCB 的初步认识
 
-- [ ] 按键功能（小键盘模式）
-- [ ] 旋钮功能（音量控制）
-- [ ] OLED 层号显示
-- [ ] RGB 灯效（至少 2 种模式）
-- [ ] 层切换功能
-- [ ] VIA 可视化改键
-- [ ] 其他：_________
+（列出你对主控板、旋钮板、接收器板等各板功能的理解）
 
-### 5.2 展示大纲 | Presentation Outline
+### 5.2 嘉立创 EDA 准备情况
 
-1. 开场（1 分钟）：
-2. 项目概述（2 分钟）：
-3. 技术讲解（5 分钟）：
-4. 实物演示（3 分钟）：
-5. 总结反思（2 分钟）：
+| 项目 Item | 状态 Status |
+|---|---|
+| 已注册嘉立创 EDA 账号 | [ ] 是 |
+| 已浏览参考项目原理图 | [ ] 是 |
+| 了解 4 层板概念 | [ ] 是 |
 
 ---
 
@@ -123,8 +116,8 @@
 
 | 维度 Dimension | 1-10 分 Score | 说明 Notes |
 |---|---|---|
-| PCB 设计质量 | | |
-| 固件开发能力 | | |
+| 无线通信能力 | | |
+| RGB/电机/显示 | | |
 | 问题解决能力 | | |
 | 文档质量 | | |
 | 整体进度 | | |
@@ -132,10 +125,4 @@
 
 ---
 
-## 七、对课程的建议 | Course Feedback
-
-（可选。对课程后半段的建议）
-
----
-
-*最后更新 | Last updated: 2026-05-26*
+*最后更新 | Last updated: 2026-05-27*

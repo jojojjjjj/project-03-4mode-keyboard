@@ -3,106 +3,134 @@
 #
 # 复制为 config.yaml 后修改 | Copy to config.yaml and modify
 #
-# Last updated: 2026-05-27
+# 最后更新 | Last updated: 2026-05-27
 
-# ===== 键盘硬件 | Keyboard Hardware =====
+# ===== 键盘硬件配置 | Keyboard Hardware =====
 keyboard:
   name: "FantasyKB 4-Mode Keyboard"
-  layout: "full_75"
-  total_keys: 75
-  shift_registers: 10  # 74HC165芯片数量
+  rows: 5
+  cols: 14
+  total_keys: 70
 
-# ===== 74HC165 移位寄存器扫描 | Shift Register Scanner =====
-scanner:
-  num_chips: 10
-  spi_clk: "GPIO4"
-  spi_miso: "GPIO5"
-  spi_cs: "GPIO6"
-  pl_pin: "GPIO7"
+# ===== 矩阵扫描配置 (74HC165 + 74HC138) =====
+# ===== Matrix Scanning (74HC165 + 74HC138) =====
+matrix:
+  # SPI 引脚 (ESP32-S3 SPI2)
+  spi_mosi_pin: "GPIO11"    # SPI MOSI (发送命令)
+  spi_miso_pin: "GPIO13"    # SPI MISO (读取数据)
+  spi_clk_pin: "GPIO12"     # SPI CLK
+  spi_cs_pin: "GPIO10"      # SPI CS (片选)
+  pl_pin: "GPIO9"           # 74HC165 并行加载引脚
   debounce_ms: 5
   scan_rate_hz: 1000
 
-# ===== GC9A01 圆形LCD | Round LCD Display =====
+# ===== GC9A01 圆形 LCD (旋钮模块) =====
+# ===== GC9A01 Round LCD (Knob Module) =====
 display:
+  enabled: true
   type: "GC9A01"
   width: 240
   height: 240
-  rotation: 0
-  spi_clk: "GPIO10"
-  spi_mosi: "GPIO11"
-  cs_pin: "GPIO12"
-  dc_pin: "GPIO13"
-  res_pin: "GPIO14"
-  bl_pin: "GPIO15"
+  spi_freq_mhz: 40
+  spi_clk: "GPIO36"
+  spi_mosi: "GPIO35"
+  cs_pin: "GPIO37"
+  dc_pin: "GPIO38"
+  rst_pin: "GPIO39"
+  bl_pin: "GPIO40"
 
 # ===== WS2812B RGB LED =====
 rgb:
+  enabled: true
   type: "WS2812B"
-  count: 95
-  data_pin: "GPIO8"
-  max_brightness: 128
+  count: 70                 # 70 颗 LED
+  data_pin: "GPIO2"         # RMT 通道输出
+  max_brightness: 128       # 最大亮度 (0-255)
+  default_mode: "rainbow"   # 默认灯效
 
-# ===== AS5047P 磁编码器 | Magnetic Encoder =====
+# ===== AS5047P 磁编码器 (旋钮模块) =====
+# ===== AS5047P Magnetic Encoder (Knob Module) =====
 encoder:
-  spi_clk: "GPIO18"
-  spi_mosi: "GPIO19"
-  spi_miso: "GPIO20"
-  cs_pin: "GPIO21"
+  enabled: true
+  spi_freq_mhz: 5.0
+  spi_mosi_pin: "GPIO41"
+  spi_miso_pin: "GPIO42"
+  spi_clk_pin: "GPIO43"
+  spi_cs_pin: "GPIO44"
+  noise_lsb: 1              # 模拟噪声
+  quad_resolution: 2048     # 正交输出分辨率
 
-# ===== TMC6300 FOC电机 | FOC Motor =====
-motor:
-  pole_pairs: 7
-  voltage_limit: 5.0
-  pid_p: 0.5
-  pid_i: 0.01
-  pid_d: 0.0
+# ===== USB 配置 =====
+usb:
+  vid: "0x303A"             # Espressif VID
+  pid: "0x4002"
+  max_power_ma: 500
+  poll_interval_ms: 1
+  ch9350_baud: 9600         # CH9350 串口波特率
+  ch9350_uart: "UART1"      # CH9350 连接的 UART
 
-# ===== USB HID =====
-hid:
-  max_keys: 6  # Boot协议最大同时按键数
-
-# ===== I2S音频 | Audio =====
+# ===== 音频子系统 (ES7210 + ES8311) =====
+# ===== Audio Subsystem =====
 audio:
+  adc_enabled: true         # ES7210
+  dac_enabled: true         # ES8311
   sample_rate: 16000
   channels: 2
   bit_depth: 16
-  i2s_bclk: "GPIO41"
-  i2s_ws: "GPIO42"
-  i2s_sdi: "GPIO39"
-  i2s_sdo: "GPIO40"
+  # I2S 引脚 | I2S pins
+  i2s_bclk: "GPIO4"
+  i2s_ws: "GPIO5"
+  i2s_sdi: "GPIO6"          # ADC 数据输入
+  i2s_sdo: "GPIO7"          # DAC 数据输出
 
-# ===== 无线通信 | Wireless =====
+# ===== 无线通信 =====
 wireless:
-  default_mode: "usb"  # usb / ble / wifi / esp_now
-  auto_switch: true
-  ble_name: "FantasyKB"
-  wifi_ssid: ""
-  esp_now_channel: 1
+  ble:
+    enabled: true
+    device_name: "FantasyKB-BLE"
+  wifi:
+    enabled: true
+    ssid: ""
+    password: ""
+    mode: "STA"
+  esp_now:
+    enabled: true
+    channel: 1
 
-# ===== 电源 | Power =====
-power:
-  battery_capacity_mah: 3000
-  charging_ic: "TP4056"
-  dcdc_5v: "HX3608"
-  ldo_3v3: "ME6217C33M5G"
+# ===== FOC 电机控制 (旋钮模块) =====
+# ===== FOC Motor Control (Knob Module) =====
+motor:
+  enabled: true
+  spi_freq_mhz: 1.0
+  pole_pairs: 7             # 2204 电机极对数
+  resistance: 10.0          # 相电阻 (ohm)
+  inductance: 0.001         # 相电感 (H)
 
-# ===== I2C总线 | I2C Bus =====
-i2c:
-  scl: "GPIO9"
-  sda: "GPIO45"
-  devices:
-    - name: "ES7210 (ADC)"
-      address: "0x40"
-    - name: "ES8311 (DAC)"
-      address: "0x18"
+# ===== 键位映射 =====
+keymap:
+  layers:
+    - name: "Base"
+      keys:
+        - ["KC_ESC", "KC_1", "KC_2", "KC_3", "KC_4", "KC_5", "KC_6", "KC_7", "KC_8", "KC_9", "KC_0", "KC_MINUS", "KC_EQUAL", "KC_BSPC"]
+        - ["KC_TAB", "KC_Q", "KC_W", "KC_E", "KC_R", "KC_T", "KC_Y", "KC_U", "KC_I", "KC_O", "KC_P", "KC_LBRACKET", "KC_RBRACKET", "KC_BACKSLASH"]
+        - ["KC_CAPS", "KC_A", "KC_S", "KC_D", "KC_F", "KC_G", "KC_H", "KC_J", "KC_K", "KC_L", "KC_SCOLON", "KC_QUOTE", "KC_GRAVE", "KC_ENTER"]
+        - ["KC_LSFT", "KC_Z", "KC_X", "KC_C", "KC_V", "KC_B", "KC_N", "KC_M", "KC_COMMA", "KC_DOT", "KC_SLASH", "KC_RSFT", "KC_UP", "KC_DEL"]
+        - ["KC_LCTL", "KC_LGUI", "KC_LALT", "KC_SPACE", "KC_SPACE", "KC_SPACE", "KC_SPACE", "KC_SPACE", "KC_RALT", "KC_RGUI", "KC_RCTL", "KC_LEFT", "KC_DOWN", "KC_RIGHT"]
+    - name: "FN"
+      keys:
+        - ["KC_GRV", "KC_F1", "KC_F2", "KC_F3", "KC_F4", "KC_F5", "KC_F6", "KC_F7", "KC_F8", "KC_F9", "KC_F10", "KC_F11", "KC_F12", "KC_TRNS"]
+        - ["KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS"]
+        - ["KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS"]
+        - ["KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_PGUP", "KC_TRNS"]
+        - ["KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_TRNS", "KC_HOME", "KC_PGDN", "KC_END"]
 
-# ===== 磁吸扩展端口 | Magnetic Expansion =====
-expansion:
-  ports: 4
-  protocol: "IIC"
-  auto_detect: true
+# ===== 调试配置 =====
+debug:
+  enabled: false
+  console_output: false
 
-# ===== 测试 | Test =====
+# ===== 测试配置 =====
 test:
   serial_port: "COM3"
   baud_rate: 115200
+  timeout_sec: 5

@@ -1,182 +1,188 @@
 # -*- coding: utf-8 -*-
 """
-USB HID 键盘协议模拟
-USB HID Keyboard Protocol Simulation
+USB HID 键盘协议模拟模块
+USB HID Keyboard Protocol Simulation Module
 
-USB HID 键盘报告格式 (Boot Protocol):
-- 报告长度: 8 字节
-- Byte 0: 修饰键 (Ctrl/Shift/Alt/GUI)
-  - bit0: Left Ctrl
-  - bit1: Left Shift
-  - bit2: Left Alt
-  - bit3: Left GUI (Win/Cmd)
-  - bit4: Right Ctrl
-  - bit5: Right Shift
-  - bit6: Right Alt
-  - bit7: Right GUI
-- Byte 1: 保留 (0x00)
-- Byte 2-7: 同时按下的键码 (最多6键, 0=无键)
+本项目键盘通过 CH9350 USB HID 芯片将按键数据上传到 PC。
+本模块模拟 USB HID 协议的报告格式和通信流程。
 
-HID 描述符中的关键值:
-- Usage Page: 0x01 (Generic Desktop)
-- Usage: 0x06 (Keyboard)
-- Collection: Application
+This keyboard uploads key data to PC via CH9350 USB HID chip.
+This module simulates USB HID report format and communication.
 
-TinyUSB 在 ESP32-S3 上实现 USB HID 设备
+=== 键盘报告格式 | Keyboard Report Format ===
 
-Last updated: 2026-05-27
+  8 字节报告 8-byte report:
+  Byte 0: 修饰键 (Ctrl/Shift/Alt/GUI bitmask)
+  Byte 1: 保留 (0x00)
+  Byte 2-7: 按键码 (最多 6 个同时按下, 6KRO)
+
+=== Boot vs Report Protocol ===
+
+  Boot Protocol: BIOS 阶段，固定 8 字节格式
+  Report Protocol: OS 阶段，支持自定义描述符和 NKRO
+
+最后更新 | Last updated: 2026-05-27
 """
 
-from typing import List, Tuple
-
-# 修饰键位掩码
-MOD_LCTRL  = 0x01
-MOD_LSHIFT = 0x02
-MOD_LALT   = 0x04
-MOD_LGUI   = 0x08
-MOD_RCTRL  = 0x10
-MOD_RSHIFT = 0x20
-MOD_RALT   = 0x40
-MOD_RGUI   = 0x80
-
-# 常用 HID 键码
-KEY_NONE = 0x00
-KEY_A = 0x04
-KEY_B = 0x05
-KEY_1 = 0x1E
-KEY_2 = 0x1F
-KEY_ENTER = 0x28
-KEY_ESCAPE = 0x29
-KEY_BACKSPACE = 0x2A
-KEY_TAB = 0x2B
-KEY_SPACE = 0x2C
-KEY_LEFT = 0x50
-KEY_RIGHT = 0x51
-KEY_UP = 0x52
-KEY_DOWN = 0x53
-KEY_VOL_UP = 0x80
-KEY_VOL_DOWN = 0x81
-KEY_MUTE = 0x7F
+from dataclasses import dataclass, field
+from typing import List, Optional
 
 
-class HIDKeyboard:
+# USB HID 键码 | USB HID Keycodes
+HID_KEYCODES = {
+    'KC_A': 0x04, 'KC_B': 0x05, 'KC_C': 0x06, 'KC_D': 0x07,
+    'KC_E': 0x08, 'KC_F': 0x09, 'KC_G': 0x0A, 'KC_H': 0x0B,
+    'KC_I': 0x0C, 'KC_J': 0x0D, 'KC_K': 0x0E, 'KC_L': 0x0F,
+    'KC_M': 0x10, 'KC_N': 0x11, 'KC_O': 0x12, 'KC_P': 0x13,
+    'KC_Q': 0x14, 'KC_R': 0x15, 'KC_S': 0x16, 'KC_T': 0x17,
+    'KC_U': 0x18, 'KC_V': 0x19, 'KC_W': 0x1A, 'KC_X': 0x1B,
+    'KC_Y': 0x1C, 'KC_Z': 0x1D,
+    'KC_1': 0x1E, 'KC_2': 0x1F, 'KC_3': 0x20, 'KC_4': 0x21,
+    'KC_5': 0x22, 'KC_6': 0x23, 'KC_7': 0x24, 'KC_8': 0x25,
+    'KC_9': 0x26, 'KC_0': 0x27,
+    'KC_ENTER': 0x28, 'KC_ESC': 0x29, 'KC_BSPC': 0x2A,
+    'KC_TAB': 0x2B, 'KC_SPACE': 0x2C,
+    'KC_F1': 0x3A, 'KC_F2': 0x3B, 'KC_F3': 0x3C, 'KC_F4': 0x3D,
+    'KC_F5': 0x3E, 'KC_F6': 0x3F, 'KC_F7': 0x40, 'KC_F8': 0x41,
+    'KC_F9': 0x42, 'KC_F10': 0x43, 'KC_F11': 0x44, 'KC_F12': 0x45,
+    'KC_RIGHT': 0x4F, 'KC_LEFT': 0x50, 'KC_DOWN': 0x51, 'KC_UP': 0x52,
+    'KC_P1': 0x59, 'KC_P2': 0x5A, 'KC_P3': 0x5B, 'KC_P4': 0x5C,
+    'KC_P5': 0x5D, 'KC_P6': 0x5E, 'KC_P7': 0x5F, 'KC_P8': 0x60,
+    'KC_P9': 0x61, 'KC_P0': 0x62, 'KC_PDOT': 0x63, 'KC_PENT': 0x58,
+    'KC_PPLS': 0x57, 'KC_PMNS': 0x56, 'KC_PAST': 0x55, 'KC_PSLS': 0x54,
+}
+
+# 修饰键位掩码 | Modifier bitmasks
+MODIFIER_MASKS = {
+    'KC_LCTL': 0x01, 'KC_LSFT': 0x02, 'KC_LALT': 0x04, 'KC_LGUI': 0x08,
+    'KC_RCTL': 0x10, 'KC_RSFT': 0x20, 'KC_RALT': 0x40, 'KC_RGUI': 0x80,
+}
+
+
+@dataclass
+class HIDReport:
     """
-    USB HID 键盘模拟器
+    USB HID 键盘报告 (8 字节)
+    Byte 0: 修饰键, Byte 1: 保留, Byte 2-7: 6 个键码 (6KRO)
+    """
+    modifiers: int = 0
+    reserved: int = 0
+    keycodes: List[int] = field(default_factory=lambda: [0] * 6)
 
-    用法：
-        hid = HIDKeyboard(config)
-        report = hid.create_report([KEY_A], modifiers=[MOD_LSHIFT])  # 大写A
-        print(hid.decode_report(report))  # "Shift + A"
+    def to_bytes(self) -> bytes:
+        """转换为 8 字节报告 | Convert to 8-byte report"""
+        result = bytearray()
+        result.append(self.modifiers & 0xFF)
+        result.append(self.reserved)
+        for i in range(6):
+            result.append(self.keycodes[i] if i < len(self.keycodes) else 0)
+        return bytes(result)
+
+    def __repr__(self) -> str:
+        keys = [f'0x{k:02X}' for k in self.keycodes if k != 0]
+        return f"HIDReport(mod=0x{self.modifiers:02X}, keys=[{', '.join(keys)}])"
+
+
+class USBHIDDevice:
+    """
+    USB HID 键盘设备模拟类
+    USB HID Keyboard Device Simulator
+
+    模拟通过 CH9350 芯片将键盘数据发送给 PC。
+    Simulates sending keyboard data to PC via CH9350 chip.
+
+    通信流程 Communication flow:
+    ESP32-S3 → UART → CH9350 → USB HID → PC
     """
 
     def __init__(self, config: dict):
-        hid_cfg = config.get("hid", {})
-        self.max_keys: int = hid_cfg.get("max_keys", 6)  # Boot协议最多6键同时
-        self.report_size: int = 8
+        usb_cfg = config.get("usb", {})
+        self.vid: str = usb_cfg.get("vid", "0x303A")
+        self.pid: str = usb_cfg.get("pid", "0x4002")
+        self.max_power: int = usb_cfg.get("max_power_ma", 500)
+        self.poll_interval_ms: int = usb_cfg.get("poll_interval_ms", 1)
+        self._modifier: int = 0
+        self._pressed_keys: List[int] = []
+        self._report_history: List[HIDReport] = []
+        self.connected: bool = False
 
-    def create_report(self, keys: List[int] = None, modifiers: List[int] = None) -> bytes:
-        """
-        创建 HID 键盘报告
+    def connect(self) -> None:
+        """模拟 USB 连接 | Simulate USB connection"""
+        self.connected = True
 
-        参数:
-            keys: HID键码列表 (最多6个)
-            modifiers: 修饰键位掩码列表
-        返回:
-            8字节 HID 报告
-        """
-        keys = keys or []
-        modifiers = modifiers or []
+    def disconnect(self) -> None:
+        """模拟 USB 断开 | Simulate USB disconnection"""
+        self.connected = False
+        self._modifier = 0
+        self._pressed_keys = []
 
-        modifier_byte = 0
-        for mod in modifiers:
-            modifier_byte |= mod
+    def press_key(self, keycode_name: str) -> Optional[HIDReport]:
+        """模拟按下按键 | Simulate key press"""
+        if not self.connected:
+            return None
+        if keycode_name in MODIFIER_MASKS:
+            self._modifier |= MODIFIER_MASKS[keycode_name]
+            return self._build_report()
+        if keycode_name in HID_KEYCODES:
+            hid_code = HID_KEYCODES[keycode_name]
+            if hid_code not in self._pressed_keys and len(self._pressed_keys) < 6:
+                self._pressed_keys.append(hid_code)
+        return self._build_report()
 
-        key_bytes = [0] * self.max_keys
-        for i, key in enumerate(keys[:self.max_keys]):
-            key_bytes[i] = key
+    def release_key(self, keycode_name: str) -> Optional[HIDReport]:
+        """模拟释放按键 | Simulate key release"""
+        if not self.connected:
+            return None
+        if keycode_name in MODIFIER_MASKS:
+            self._modifier &= ~MODIFIER_MASKS[keycode_name]
+            return self._build_report()
+        if keycode_name in HID_KEYCODES:
+            hid_code = HID_KEYCODES[keycode_name]
+            if hid_code in self._pressed_keys:
+                self._pressed_keys.remove(hid_code)
+        return self._build_report()
 
-        report = bytes([modifier_byte, 0x00] + key_bytes)
+    def release_all(self) -> Optional[HIDReport]:
+        """释放所有按键 | Release all keys"""
+        self._modifier = 0
+        self._pressed_keys = []
+        return self._build_report()
+
+    def _build_report(self) -> HIDReport:
+        """构建 8 字节 HID 报告 | Build 8-byte HID report"""
+        keycodes = [0] * 6
+        for i, code in enumerate(self._pressed_keys[:6]):
+            keycodes[i] = code
+        report = HIDReport(modifiers=self._modifier, keycodes=keycodes)
+        self._report_history.append(report)
         return report
 
-    def decode_report(self, report: bytes) -> str:
-        """解码 HID 报告为可读字符串"""
-        if len(report) < 8:
-            return "Invalid report"
+    def get_last_report(self) -> Optional[HIDReport]:
+        """获取最后一次报告 | Get last report"""
+        return self._report_history[-1] if self._report_history else None
 
-        modifier = report[0]
-        keys = [k for k in report[2:8] if k != 0x00]
+    def get_report_history(self) -> List[HIDReport]:
+        """获取报告历史 | Get report history"""
+        return list(self._report_history)
 
-        parts = []
-        mod_names = {
-            MOD_LCTRL: "LCtrl", MOD_LSHIFT: "LShift",
-            MOD_LALT: "LAlt", MOD_LGUI: "LGUI",
-            MOD_RCTRL: "RCtrl", MOD_RSHIFT: "RShift",
-            MOD_RALT: "RAlt", MOD_RGUI: "RGUI",
-        }
-        for bit, name in mod_names.items():
-            if modifier & bit:
-                parts.append(name)
+    def clear_history(self) -> None:
+        """清除报告历史 | Clear report history"""
+        self._report_history.clear()
 
-        for key in keys:
-            parts.append(f"Key_0x{key:02X}")
-
-        return " + ".join(parts) if parts else "(no keys)"
-
-    def create_nkro_report(self, pressed_keys: List[int], modifiers: List[int] = None) -> dict:
-        """
-        NKRO (N-Key Roll Over) 报告格式
-
-        Boot协议最多6键同时。NKRO扩展使用位图报告：
-        - 每个键码对应1个bit
-        - 支持同时按下任意数量的键
-        - 本项目75键键盘使用NKRO
-
-        返回 NKRO 位图字典
-        """
-        modifiers = modifiers or []
-        modifier_byte = 0
-        for mod in modifiers:
-            modifier_byte |= mod
-
-        bitmap = {}
-        for key in pressed_keys:
-            byte_idx = key // 8
-            bit_idx = key % 8
-            if byte_idx not in bitmap:
-                bitmap[byte_idx] = 0
-            bitmap[byte_idx] |= (1 << bit_idx)
-
-        return {
-            "type": "NKRO",
-            "modifier": modifier_byte,
-            "key_bitmap": bitmap,
-            "total_pressed": len(pressed_keys),
-        }
-
-    def get_report_descriptor(self) -> str:
-        """USB HID 报告描述符（简化版，教学用）"""
+    def explain_report(self) -> str:
+        """生成 HID 报告格式说明 | Generate report format explanation"""
+        report = self.get_last_report()
+        data_str = " ".join(f"0x{b:02X}" for b in report.to_bytes()) if report else "N/A"
         return (
-            "HID Report Descriptor (Keyboard Boot Protocol):\n"
-            "  Usage Page (Generic Desktop)    0x05 0x01\n"
-            "  Usage (Keyboard)                0x09 0x06\n"
-            "  Collection (Application)        0xA1 0x01\n"
-            "    Usage Page (Key Codes)        0x05 0x07\n"
-            "    Usage Minimum (224)           0x19 0xE0\n"
-            "    Usage Maximum (231)           0x29 0xE7\n"
-            "    Logical Minimum (0)           0x15 0x00\n"
-            "    Logical Maximum (1)           0x25 0x01\n"
-            "    Report Size (1)               0x75 0x01\n"
-            "    Report Count (8)              0x95 0x08\n"
-            "    Input (Data,Var,Abs)          0x81 0x02  <- 修饰键\n"
-            "    Report Count (1)              0x95 0x01\n"
-            "    Report Size (8)               0x75 0x08\n"
-            "    Input (Const)                 0x81 0x01  <- 保留字节\n"
-            "    Report Count (6)              0x95 0x06\n"
-            "    Report Size (8)               0x75 0x08\n"
-            "    Logical Maximum (101)         0x25 0x65\n"
-            "    Input (Data,Ary,Abs)          0x81 0x00  <- 键码\n"
-            "  End Collection                  0xC0\n"
+            f"=== USB HID Keyboard Report ===\n"
+            f"VID:PID = {self.vid}:{self.pid}\n"
+            f"Poll: {self.poll_interval_ms}ms\n"
+            f"Byte 0: Modifiers (bitmask)\n"
+            f"Byte 1: Reserved (0x00)\n"
+            f"Byte 2-7: Keycodes (max 6, 6KRO)\n"
+            f"Current: {data_str}\n"
         )
 
     def __repr__(self) -> str:
-        return f"HIDKeyboard(max_keys={self.max_keys})"
+        return (f"USBHIDDevice(vid={self.vid}, pid={self.pid}, "
+                f"connected={self.connected}, pressed={len(self._pressed_keys)})")
