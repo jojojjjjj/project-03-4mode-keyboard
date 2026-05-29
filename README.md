@@ -2,14 +2,14 @@
 
 > **本项目基于开源项目 [承载我所有幻想的键盘](https://oshwhub.com/ran-pang/multifunctional-keyboard)（原作者：[蓝星多面体](https://space.bilibili.com/3546587666057417)）改编，已获得原作者授权用于教学目的。**
 >
-> **This project is adapted from the open-source project ["The Keyboard That Carries All My Fantasies"](https://oshwhub.com/ran-pang/multifunctional-keyboard) by [蓝星多面体](https://space.bilibili.com/3546587666057417), used with the original author's permission for educational purposes.**
+> **This project is adapted from the open-source project [&#34;The Keyboard That Carries All My Fantasies&#34;](https://oshwhub.com/ran-pang/multifunctional-keyboard) by [蓝星多面体](https://space.bilibili.com/3546587666057417), used with the original author's permission for educational purposes.**
 
-| 链接 Link | 说明 Description |
-|-----------|-----------------|
-| **B站原作演示视频** | [bilibili.com/video/BV16i421Y7JJ](https://www.bilibili.com/video/BV16i421Y7JJ/?spm_id_from=333.788.top_right_bar_window_custom_collection.content.click&vd_source=6140074911db12a31084ad734129ee49) |
-| **B站完整演示视频** | [bilibili.com/video/BV1Nx4y1t7gE](https://www.bilibili.com/video/BV1Nx4y1t7gE) |
-| **OSHWHUB 开源工程（PCB/原理图）** | [oshwhub.com/ran-pang/multifunctional-keyboard](https://oshwhub.com/ran-pang/multifunctional-keyboard) |
-| **原作者 B站主页** | [space.bilibili.com/3546587666057417](https://space.bilibili.com/3546587666057417) |
+| 链接 Link                                | 说明 Description                                                                                                                                                                                 |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **B站原作演示视频**                | [bilibili.com/video/BV16i421Y7JJ](https://www.bilibili.com/video/BV16i421Y7JJ/?spm_id_from=333.788.top_right_bar_window_custom_collection.content.click&vd_source=6140074911db12a31084ad734129ee49) |
+| **B站完整演示视频**                | [bilibili.com/video/BV1Nx4y1t7gE](https://www.bilibili.com/video/BV1Nx4y1t7gE)                                                                                                                      |
+| **OSHWHUB 开源工程（PCB/原理图）** | [oshwhub.com/ran-pang/multifunctional-keyboard](https://oshwhub.com/ran-pang/multifunctional-keyboard)                                                                                              |
+| **原作者 B站主页**                 | [space.bilibili.com/3546587666057417](https://space.bilibili.com/3546587666057417)                                                                                                                  |
 
 ---
 
@@ -47,22 +47,22 @@ Upon completing this project, you will have:
 
 ## 核心功能 | Core Features
 
-| 功能 Feature | 说明 Description |
-|---|---|
-| 4 模连接 | USB 有线、蓝牙 BLE、WiFi、ESP-NOW 2.4GHz 无线接收器 |
-| ~75 键全布局 | 74HC165 移位寄存器 SPI 菊花链扫描，支持全键无冲 |
-| FOC 电机旋钮 | TMC6300 三相驱动 + AS5047P 14 位磁编码器 + SimpleFOC 算法 |
-| 旋钮显示屏 | GC9A01 1.28" 240x240 圆形 LCD，LVGL 图形界面 |
-| 触觉力反馈 | 旋钮支持档位感、弹性回弹、阻尼等力反馈效果 |
-| 压力传感 | HX711 + 应变片 x4，检测旋钮按压力度 |
-| 语音交互 | ES7210 四通道 ADC 录音 + ES8311 DAC + NS4150B x2 立体声功放 |
-| USB Hub | SL2.1A 四口 USB 2.0 Hub |
-| USB-TTL | CH342F 双通道 USB 转串口（键盘主控 + 旋钮主控） |
-| U 盘模拟 | GL823K USB 存储控制器 |
-| 鼠标转发 | Type-A 口接鼠标，ESP32-S3 读取并随无线模式转发 |
-| RGB 灯效 | WS2812B x95，每键独立 RGB |
-| 磁吸扩展 | 4 个磁吸弹簧针接口，IIC 通信 + 自动设备检测电路 |
-| 模拟摇杆 | 摇杆模拟量输入，可映射为方向键或游戏输入 |
+| 功能 Feature | 说明 Description                                            |
+| ------------ | ----------------------------------------------------------- |
+| 4 模连接     | USB 有线、蓝牙 BLE、WiFi、ESP-NOW 2.4GHz 无线接收器         |
+| ~75 键全布局 | 74HC165 移位寄存器 SPI 菊花链扫描，支持全键无冲             |
+| FOC 电机旋钮 | TMC6300 三相驱动 + AS5047P 14 位磁编码器 + SimpleFOC 算法   |
+| 旋钮显示屏   | GC9A01 1.28" 240x240 圆形 LCD，LVGL 图形界面                |
+| 触觉力反馈   | 旋钮支持档位感、弹性回弹、阻尼等力反馈效果                  |
+| 压力传感     | HX711 + 应变片 x4，检测旋钮按压力度                         |
+| 语音交互     | ES7210 四通道 ADC 录音 + ES8311 DAC + NS4150B x2 立体声功放 |
+| USB Hub      | SL2.1A 四口 USB 2.0 Hub                                     |
+| USB-TTL      | CH342F 双通道 USB 转串口（键盘主控 + 旋钮主控）             |
+| U 盘模拟     | GL823K USB 存储控制器                                       |
+| 鼠标转发     | Type-A 口接鼠标，ESP32-S3 读取并随无线模式转发              |
+| RGB 灯效     | WS2812B x95，每键独立 RGB                                   |
+| 磁吸扩展     | 4 个磁吸弹簧针接口，IIC 通信 + 自动设备检测电路             |
+| 模拟摇杆     | 摇杆模拟量输入，可映射为方向键或游戏输入                    |
 
 ---
 
@@ -110,27 +110,27 @@ Upon completing this project, you will have:
 
 ### 子系统详细 | Subsystem Details
 
-| 子系统 Subsystem | 主要元件 Main Components | 通信协议 Protocol | 说明 Description |
-|---|---|---|---|
-| 主控 MCU | ESP32-S3-WROOM-1-N16R8 | - | 16MB Flash + 8MB PSRAM，WiFi/BLE/USB 全集成 |
-| 按键扫描 Key Scanning | 74HC165 移位寄存器 x10 | SPI 菊花链 | 参考稚辉君瀚文键盘方案，全键无冲 |
-| 无线通信 Wireless | ESP32-S3 内置 WiFi/BLE + ESP-NOW | WiFi/BLE/2.4GHz | 4 模切换：USB / BLE / WiFi / ESP-NOW |
-| USB Hub | SL2.1A | USB 2.0 | 4 口 USB 2.0 集线器 |
-| USB-TTL | CH342F (双通道) | UART | 分别连接键盘主控和旋钮主控的串口下载 |
-| USB 存储 | GL823K | USB Mass Storage | U 盘模拟功能 |
-| 音频 ADC | ES7210 (4 通道) | I2S + IIC | 双麦克风录音，参考 ESP-BOX 设计 |
-| 音频 DAC | ES8311 | I2S + IIC | 音频播放输出 |
-| 音频功放 | NS4150B x2 (立体声) | - | 3W 立体声输出 |
-| 旋钮主控 Knob MCU | ESP32-S3-WROOM-1-N16R8 | UART 至键盘 | 独立 MCU，通过 UART 与键盘主控通信 |
-| 旋钮显示屏 Knob Display | GC9A01 1.28" 圆形 LCD | SPI | 240x240 分辨率，LVGL 图形界面 |
-| 电机驱动 Motor Driver | TMC6300 (三相 BLDC) | FOC | 磁场定向控制，实现力反馈 |
-| 磁编码器 Magnetic Encoder | AS5047P (14 位) | SPI | 高精度角度检测，分辨率 0.022 度 |
-| 压力传感器 Pressure Sensor | HX711 + 应变片 x4 | - | 检测旋钮按压力度 |
-| RGB LED | WS2812B x95 | 单线协议 | 每键独立 RGB 地址able LED |
-| 磁吸扩展 Magnetic Expansion | 磁吸弹簧针 x4 | IIC | 带自动检测与保护电路 |
-| 接收器 Receiver | ESP32-S3 (基础版) | ESP-NOW | 2.4GHz 无线 USB 接收器 |
-| 键盘电源 Power (Keyboard) | TP4056 + HX3608 + ME6217 | - | 充电管理 + 升压 + LDO |
-| 旋钮电源 Power (Knob) | DW01 + FS8205A + ME6217 | - | 锂电保护 + LDO |
+| 子系统 Subsystem            | 主要元件 Main Components         | 通信协议 Protocol | 说明 Description                            |
+| --------------------------- | -------------------------------- | ----------------- | ------------------------------------------- |
+| 主控 MCU                    | ESP32-S3-WROOM-1-N16R8           | -                 | 16MB Flash + 8MB PSRAM，WiFi/BLE/USB 全集成 |
+| 按键扫描 Key Scanning       | 74HC165 移位寄存器 x10           | SPI 菊花链        | 参考稚辉君瀚文键盘方案，全键无冲            |
+| 无线通信 Wireless           | ESP32-S3 内置 WiFi/BLE + ESP-NOW | WiFi/BLE/2.4GHz   | 4 模切换：USB / BLE / WiFi / ESP-NOW        |
+| USB Hub                     | SL2.1A                           | USB 2.0           | 4 口 USB 2.0 集线器                         |
+| USB-TTL                     | CH342F (双通道)                  | UART              | 分别连接键盘主控和旋钮主控的串口下载        |
+| USB 存储                    | GL823K                           | USB Mass Storage  | U 盘模拟功能                                |
+| 音频 ADC                    | ES7210 (4 通道)                  | I2S + IIC         | 双麦克风录音，参考 ESP-BOX 设计             |
+| 音频 DAC                    | ES8311                           | I2S + IIC         | 音频播放输出                                |
+| 音频功放                    | NS4150B x2 (立体声)              | -                 | 3W 立体声输出                               |
+| 旋钮主控 Knob MCU           | ESP32-S3-WROOM-1-N16R8           | UART 至键盘       | 独立 MCU，通过 UART 与键盘主控通信          |
+| 旋钮显示屏 Knob Display     | GC9A01 1.28" 圆形 LCD            | SPI               | 240x240 分辨率，LVGL 图形界面               |
+| 电机驱动 Motor Driver       | TMC6300 (三相 BLDC)              | FOC               | 磁场定向控制，实现力反馈                    |
+| 磁编码器 Magnetic Encoder   | AS5047P (14 位)                  | SPI               | 高精度角度检测，分辨率 0.022 度             |
+| 压力传感器 Pressure Sensor  | HX711 + 应变片 x4                | -                 | 检测旋钮按压力度                            |
+| RGB LED                     | WS2812B x95                      | 单线协议          | 每键独立 RGB 地址able LED                   |
+| 磁吸扩展 Magnetic Expansion | 磁吸弹簧针 x4                    | IIC               | 带自动检测与保护电路                        |
+| 接收器 Receiver             | ESP32-S3 (基础版)                | ESP-NOW           | 2.4GHz 无线 USB 接收器                      |
+| 键盘电源 Power (Keyboard)   | TP4056 + HX3608 + ME6217         | -                 | 充电管理 + 升压 + LDO                       |
+| 旋钮电源 Power (Knob)       | DW01 + FS8205A + ME6217          | -                 | 锂电保护 + LDO                              |
 
 ### 三颗 ESP32-S3 分工 | Three ESP32-S3 MCU Roles
 
@@ -168,20 +168,20 @@ Upon completing this project, you will have:
 
 This project includes 12 PCBs: 4 four-layer boards + 8 two-layer boards.
 
-| 编号 | 板名 Board Name | 层数 Layers | 板厚 Thickness | 尺寸 Size | 特殊工艺 Special Process |
-|---|---|---|---|---|---|
-| 1 | 键盘主板 V4 (Keyboard Main Board) | 4 层 | 1.2mm | 300x120mm | 阻抗控制 +/-20% |
-| 2 | 方向键小板 (Arrow Key Sub-Board) | 2 层 | 1.2mm | - | - |
-| 3 | 音频板 V2 (Audio Board) | 4 层 | 1.0mm | - | - |
-| 4 | 指示灯板 (Indicator LED Board) | 2 层 | 1.0mm | - | - |
-| 5 | 磁吸接口板 (Magnetic Connector Board) | 2 层 | 1.6mm | - | - |
-| 6 | 旋钮磁吸转接板 (Knob Magnetic Adapter) | 2 层 | 1.0mm | - | - |
-| 7 | 圆灯板 (Round LED Board) | 2 层 | 1.0mm | - | - |
-| 8 | USB 板 (USB Board) | 2 层 | 1.0mm | - | - |
-| 9 | 旋钮主板 V4 (Knob Main Board) | 4 层 | 1.0mm | - | ENIG 沉金 |
-| 10 | 旋钮电池灯板 (Knob Battery & LED Board) | 2 层 | 1.0mm | - | - |
-| 11 | 屏幕 FPC 转接板 (Screen FPC Adapter) | 2 层 | 1.0mm | - | - |
-| 12 | 接收器板 (Receiver Board) | 4 层 | 1.0mm | - | ENIG 沉金 |
+| 编号 | 板名 Board Name                         | 层数 Layers | 板厚 Thickness | 尺寸 Size | 特殊工艺 Special Process |
+| ---- | --------------------------------------- | ----------- | -------------- | --------- | ------------------------ |
+| 1    | 键盘主板 V4 (Keyboard Main Board)       | 4 层        | 1.2mm          | 300x120mm | 阻抗控制 +/-20%          |
+| 2    | 方向键小板 (Arrow Key Sub-Board)        | 2 层        | 1.2mm          | -         | -                        |
+| 3    | 音频板 V2 (Audio Board)                 | 4 层        | 1.0mm          | -         | -                        |
+| 4    | 指示灯板 (Indicator LED Board)          | 2 层        | 1.0mm          | -         | -                        |
+| 5    | 磁吸接口板 (Magnetic Connector Board)   | 2 层        | 1.6mm          | -         | -                        |
+| 6    | 旋钮磁吸转接板 (Knob Magnetic Adapter)  | 2 层        | 1.0mm          | -         | -                        |
+| 7    | 圆灯板 (Round LED Board)                | 2 层        | 1.0mm          | -         | -                        |
+| 8    | USB 板 (USB Board)                      | 2 层        | 1.0mm          | -         | -                        |
+| 9    | 旋钮主板 V4 (Knob Main Board)           | 4 层        | 1.0mm          | -         | ENIG 沉金                |
+| 10   | 旋钮电池灯板 (Knob Battery & LED Board) | 2 层        | 1.0mm          | -         | -                        |
+| 11   | 屏幕 FPC 转接板 (Screen FPC Adapter)    | 2 层        | 1.0mm          | -         | -                        |
+| 12   | 接收器板 (Receiver Board)               | 4 层        | 1.0mm          | -         | ENIG 沉金                |
 
 > 四层板层压结构：JLC04161H-7628（嘉立创免费阻抗叠层）。
 > Four-layer stackup: JLC04161H-7628 (free impedance-controlled stackup from JLCPCB).
@@ -194,45 +194,45 @@ This project includes 12 PCBs: 4 four-layer boards + 8 two-layer boards.
 >
 > Total budget is approximately ¥1,028, exceeding the ¥500 constraint in CLAUDE.md. This is a documented tradeoff due to the project's significantly higher complexity.
 
-| 类别 Category | 金额 Amount (CNY) | 说明 Description |
-|---|---|---|
-| 主要 IC 及有源器件 Main ICs & Active Components | ¥116.40 | ESP32-S3 x3、74HC165 x10、ES7210/ES8311、TMC6300、AS5047P 等 |
-| 旋钮模块 Knob Module (motor/encoder/LCD) | ¥82.50 | 无刷电机 + TMC6300 + AS5047P + GC9A01 |
-| WS2812B RGB LED (95 颗) | ¥25.00 | 每键一颗 |
-| 连接器 Connectors (magnetic/Type-C/FPC) | ¥31.60 | 磁吸弹簧针、Type-C 母座、FPC 排线座 |
-| 被动元件 Passive Components | ¥18.25 | 电阻、电容、电感、二极管等 |
-| 机电元件 Electromechanical (switches/keycaps/hot-swap) | ¥352.00 | 机械轴体 x75、热插拔轴座 x75、键帽套装 |
-| PCB 制造 PCB Manufacturing (12 块板) | ¥144.00 | 4 块四层板 + 8 块双层板 |
-| SMT 贴片 SMT Assembly | ¥125.00 | 嘉立创 SMT 服务 |
-| 3D 打印/结构件 3D Printing / Structural | ¥105.00 | 外壳、旋钮壳体、定位板 |
-| 线材及杂项 Cables & Misc | ¥28.00 | FPC 排线、杜邦线、螺丝等 |
-| **总计 Total** | **~¥1,027.75** | |
+| 类别 Category                                          | 金额 Amount (CNY)     | 说明 Description                                             |
+| ------------------------------------------------------ | --------------------- | ------------------------------------------------------------ |
+| 主要 IC 及有源器件 Main ICs & Active Components        | ¥116.40              | ESP32-S3 x3、74HC165 x10、ES7210/ES8311、TMC6300、AS5047P 等 |
+| 旋钮模块 Knob Module (motor/encoder/LCD)               | ¥82.50               | 无刷电机 + TMC6300 + AS5047P + GC9A01                        |
+| WS2812B RGB LED (95 颗)                                | ¥25.00               | 每键一颗                                                     |
+| 连接器 Connectors (magnetic/Type-C/FPC)                | ¥31.60               | 磁吸弹簧针、Type-C 母座、FPC 排线座                          |
+| 被动元件 Passive Components                            | ¥18.25               | 电阻、电容、电感、二极管等                                   |
+| 机电元件 Electromechanical (switches/keycaps/hot-swap) | ¥352.00              | 机械轴体 x75、热插拔轴座 x75、键帽套装                       |
+| PCB 制造 PCB Manufacturing (12 块板)                   | ¥144.00              | 4 块四层板 + 8 块双层板                                      |
+| SMT 贴片 SMT Assembly                                  | ¥125.00              | 嘉立创 SMT 服务                                              |
+| 3D 打印/结构件 3D Printing / Structural                | ¥105.00              | 外壳、旋钮壳体、定位板                                       |
+| 线材及杂项 Cables & Misc                               | ¥28.00               | FPC 排线、杜邦线、螺丝等                                     |
+| **总计 Total**                                   | **~¥1,027.75** |                                                              |
 
 ### 核心元器件清单 | Key Component List
 
-| 元件 Component | 型号/规格 Specification | 数量 Qty | 参考单价 Unit Price (CNY) | 说明 Notes |
-|---|---|---|---|---|
-| 主控 MCU (键盘) | ESP32-S3-WROOM-1-N16R8 | 1 | 25.00 | 16MB Flash + 8MB PSRAM |
-| 主控 MCU (旋钮) | ESP32-S3-WROOM-1-N16R8 | 1 | 25.00 | 同上 |
-| 主控 MCU (接收器) | ESP32-S3-WROOM-1-N16R8 | 1 | 25.00 | 同上 |
-| 移位寄存器 | 74HC165 | 10 | 0.80 | SPI 菊花链按键扫描 |
-| 音频 ADC | ES7210 | 1 | 5.00 | 4 通道 I2S ADC |
-| 音频 DAC | ES8311 | 1 | 3.50 | I2S DAC |
-| 音频功放 | NS4150B | 2 | 1.50 | 3W D 类功放 |
-| USB Hub | SL2.1A | 1 | 3.00 | 4 口 USB 2.0 |
-| USB-TTL | CH342F | 1 | 4.00 | 双通道 USB 转串口 |
-| USB 存储 | GL823K | 1 | 2.50 | U 盘模拟 |
-| LCD 驱动 | GC9A01 | 1 | 12.00 | 1.28" 240x240 圆形屏 |
-| 电机驱动 | TMC6300 | 1 | 15.00 | 三相 BLDC 驱动 |
-| 磁编码器 | AS5047P | 1 | 18.00 | 14 位 SPI 磁编码器 |
-| 压力传感器 | HX711 | 1 | 3.00 | 24 位 ADC |
-| RGB LED | WS2812B-5050 | 95 | 0.26 | 可寻址 RGB LED |
-| 机械轴体 | 佳达隆 G Pro 3.0 (或等同) | ~75 | 2.50 | 可选红/青/茶轴 |
-| 热插拔轴座 | Kailh 热插拔底座 | ~75 | 0.50 | MX 兼容 |
-| 充电管理 | TP4056 | 1 | 0.50 | 锂电池充电 |
-| 升压芯片 | HX3608 | 1 | 1.00 | 升压至 5V |
-| LDO | ME6217 (3.3V) | 3 | 0.50 | 低压差线性稳压器 |
-| 电池保护 | DW01 + FS8205A | 1 套 | 0.50 | 旋钮锂电保护 |
+| 元件 Component    | 型号/规格 Specification   | 数量 Qty | 参考单价 Unit Price (CNY) | 说明 Notes             |
+| ----------------- | ------------------------- | -------- | ------------------------- | ---------------------- |
+| 主控 MCU (键盘)   | ESP32-S3-WROOM-1-N16R8    | 1        | 25.00                     | 16MB Flash + 8MB PSRAM |
+| 主控 MCU (旋钮)   | ESP32-S3-WROOM-1-N16R8    | 1        | 25.00                     | 同上                   |
+| 主控 MCU (接收器) | ESP32-S3-WROOM-1-N16R8    | 1        | 25.00                     | 同上                   |
+| 移位寄存器        | 74HC165                   | 10       | 0.80                      | SPI 菊花链按键扫描     |
+| 音频 ADC          | ES7210                    | 1        | 5.00                      | 4 通道 I2S ADC         |
+| 音频 DAC          | ES8311                    | 1        | 3.50                      | I2S DAC                |
+| 音频功放          | NS4150B                   | 2        | 1.50                      | 3W D 类功放            |
+| USB Hub           | SL2.1A                    | 1        | 3.00                      | 4 口 USB 2.0           |
+| USB-TTL           | CH342F                    | 1        | 4.00                      | 双通道 USB 转串口      |
+| USB 存储          | GL823K                    | 1        | 2.50                      | U 盘模拟               |
+| LCD 驱动          | GC9A01                    | 1        | 12.00                     | 1.28" 240x240 圆形屏   |
+| 电机驱动          | TMC6300                   | 1        | 15.00                     | 三相 BLDC 驱动         |
+| 磁编码器          | AS5047P                   | 1        | 18.00                     | 14 位 SPI 磁编码器     |
+| 压力传感器        | HX711                     | 1        | 3.00                      | 24 位 ADC              |
+| RGB LED           | WS2812B-5050              | 95       | 0.26                      | 可寻址 RGB LED         |
+| 机械轴体          | 佳达隆 G Pro 3.0 (或等同) | ~75      | 2.50                      | 可选红/青/茶轴         |
+| 热插拔轴座        | Kailh 热插拔底座          | ~75      | 0.50                      | MX 兼容                |
+| 充电管理          | TP4056                    | 1        | 0.50                      | 锂电池充电             |
+| 升压芯片          | HX3608                    | 1        | 1.00                      | 升压至 5V              |
+| LDO               | ME6217 (3.3V)             | 3        | 0.50                      | 低压差线性稳压器       |
+| 电池保护          | DW01 + FS8205A            | 1 套     | 0.50                      | 旋钮锂电保护           |
 
 ---
 
@@ -240,22 +240,22 @@ This project includes 12 PCBs: 4 four-layer boards + 8 two-layer boards.
 
 ### 固件层（运行在 ESP32-S3 上 | Firmware on ESP32-S3）
 
-| 模块 Module | 开发环境 IDE | 语言 Language | 框架 Framework | 说明 Description |
-|---|---|---|---|---|
-| 键盘固件 Keyboard Firmware | ESP-IDF | C | FreeRTOS | 按键扫描、4 模通信、音频、USB HID |
-| 旋钮固件 Knob Firmware | PlatformIO (VS Code) | C/C++ | LVGL + SimpleFOC | FOC 控制、LCD 显示、力反馈 |
-| 接收器固件 Receiver Firmware | ESP-IDF | C | ESP-NOW | 2.4GHz 无线接收 + USB HID |
+| 模块 Module                  | 开发环境 IDE         | 语言 Language | 框架 Framework   | 说明 Description                  |
+| ---------------------------- | -------------------- | ------------- | ---------------- | --------------------------------- |
+| 键盘固件 Keyboard Firmware   | ESP-IDF              | C             | FreeRTOS         | 按键扫描、4 模通信、音频、USB HID |
+| 旋钮固件 Knob Firmware       | PlatformIO (VS Code) | C/C++         | LVGL + SimpleFOC | FOC 控制、LCD 显示、力反馈        |
+| 接收器固件 Receiver Firmware | ESP-IDF              | C             | ESP-NOW          | 2.4GHz 无线接收 + USB HID         |
 
 ### 工具层（运行在 PC 上 | Tools on PC）
 
-| 工具 Tool | 用途 Purpose |
-|---|---|
-| **VS Code** | 主力代码编辑器 Main code editor |
-| **ESP-IDF v5.x** | 键盘和接收器固件开发环境 Keyboard & receiver firmware SDK |
-| **PlatformIO** | 旋钮固件开发环境 Knob firmware IDE (VS Code extension) |
-| **嘉立创 EDA (LCEDA)** | PCB 设计（原理图 + 布局）PCB design tool |
-| **Git** | 版本控制 Version control |
-| **Python 3.10+** | 测试脚本、工具链 Test scripts and tooling |
+| 工具 Tool                    | 用途 Purpose                                              |
+| ---------------------------- | --------------------------------------------------------- |
+| **VS Code**            | 主力代码编辑器 Main code editor                           |
+| **ESP-IDF v5.x**       | 键盘和接收器固件开发环境 Keyboard & receiver firmware SDK |
+| **PlatformIO**         | 旋钮固件开发环境 Knob firmware IDE (VS Code extension)    |
+| **嘉立创 EDA (LCEDA)** | PCB 设计（原理图 + 布局）PCB design tool                  |
+| **Git**                | 版本控制 Version control                                  |
+| **Python 3.10+**       | 测试脚本、工具链 Test scripts and tooling                 |
 
 ---
 
@@ -294,75 +294,75 @@ python -m pytest tests/ -v
 
 ### 第一阶段：电子基础与 ESP32-S3 入门（Day 1-5）| Phase 1: Electronics Fundamentals
 
-| 天数 Day | 主题 Topic | 核心内容 Key Content |
-|---|---|---|
-| Day 01 | 项目启动与电子学基础 | 电路基础、面包板实验、LED 点亮、ESP32-S3 简介 |
-| Day 02 | SPI 通信与移位寄存器 | 74HC165 菊花链原理、SPI 协议、面包板按键扫描实验 |
-| Day 03 | I2C/I2S 通信与音频入门 | I2C 协议、I2S 音频基础、ES7210/ES8311 简介 |
-| Day 04 | 无线通信基础 | WiFi/BLE/ESP-NOW 原理、ESP32-S3 无线功能实验 |
-| Day 05 | RGB 与显示 | WS2812B 单线协议、GC9A01 SPI LCD、LVGL 入门 |
+| 天数 Day | 主题 Topic             | 核心内容 Key Content                             |
+| -------- | ---------------------- | ------------------------------------------------ |
+| Day 01   | 项目启动与电子学基础   | 电路基础、面包板实验、LED 点亮、ESP32-S3 简介    |
+| Day 02   | SPI 通信与移位寄存器   | 74HC165 菊花链原理、SPI 协议、面包板按键扫描实验 |
+| Day 03   | I2C/I2S 通信与音频入门 | I2C 协议、I2S 音频基础、ES7210/ES8311 简介       |
+| Day 04   | 无线通信基础           | WiFi/BLE/ESP-NOW 原理、ESP32-S3 无线功能实验     |
+| Day 05   | RGB 与显示             | WS2812B 单线协议、GC9A01 SPI LCD、LVGL 入门      |
 
 ### 第二阶段：子系统原型验证（Day 6-10）| Phase 2: Subsystem Prototyping
 
-| 天数 Day | 主题 Topic | 核心内容 Key Content |
-|---|---|---|
-| Day 06 | 按键扫描子系统 | 10 片 74HC165 菊花链焊接与测试、全键扫描固件 |
-| Day 07 | FOC 电机旋钮子系统 | TMC6300 + AS5047P + SimpleFOC、力反馈原型 |
-| Day 08 | 音频子系统 | ES7210 录音 + ES8311 播放 + NS4150B 功放调试 |
-| Day 09 | 无线与 USB 子系统 | 4 模通信切换、SL2.1A Hub + CH342F + GL823K |
-| Day 10 | 磁吸扩展与压力传感 | IIC 磁吸接口、HX711 压力传感、摇杆输入 |
+| 天数 Day | 主题 Topic         | 核心内容 Key Content                         |
+| -------- | ------------------ | -------------------------------------------- |
+| Day 06   | 按键扫描子系统     | 10 片 74HC165 菊花链焊接与测试、全键扫描固件 |
+| Day 07   | FOC 电机旋钮子系统 | TMC6300 + AS5047P + SimpleFOC、力反馈原型    |
+| Day 08   | 音频子系统         | ES7210 录音 + ES8311 播放 + NS4150B 功放调试 |
+| Day 09   | 无线与 USB 子系统  | 4 模通信切换、SL2.1A Hub + CH342F + GL823K   |
+| Day 10   | 磁吸扩展与压力传感 | IIC 磁吸接口、HX711 压力传感、摇杆输入       |
 
 ### 第三阶段：PCB 设计（Day 11-15）| Phase 3: PCB Design
 
-| 天数 Day | 主题 Topic | 核心内容 Key Content |
-|---|---|---|
-| Day 11 | 嘉立创 EDA 四层板入门 | 四层板设计规范、阻抗控制、层叠结构 |
-| Day 12 | 键盘主板原理图绘制 | 完整原理图：ESP32-S3 + 74HC165 + USB + 电源 |
-| Day 13 | 键盘主板 PCB 布局 | 300x120mm 四层板布局布线、DRC 检查 |
-| Day 14 | 旋钮板 + 接收器板设计 | 旋钮主板 V4 + 接收器板原理图与 PCB |
-| Day 15 | 其余小板设计 | 方向键板、音频板、USB 板等 8 块双层板 |
+| 天数 Day | 主题 Topic            | 核心内容 Key Content                        |
+| -------- | --------------------- | ------------------------------------------- |
+| Day 11   | 嘉立创 EDA 四层板入门 | 四层板设计规范、阻抗控制、层叠结构          |
+| Day 12   | 键盘主板原理图绘制    | 完整原理图：ESP32-S3 + 74HC165 + USB + 电源 |
+| Day 13   | 键盘主板 PCB 布局     | 300x120mm 四层板布局布线、DRC 检查          |
+| Day 14   | 旋钮板 + 接收器板设计 | 旋钮主板 V4 + 接收器板原理图与 PCB          |
+| Day 15   | 其余小板设计          | 方向键板、音频板、USB 板等 8 块双层板       |
 
 ### 第四阶段：固件开发与集成（Day 16-18）| Phase 4: Firmware Development
 
-| 天数 Day | 主题 Topic | 核心内容 Key Content |
-|---|---|---|
-| Day 16 | 键盘固件开发 | ESP-IDF FreeRTOS 任务架构、按键扫描 + USB HID |
-| Day 17 | 旋钮固件开发 | LVGL UI + SimpleFOC 力反馈 + GC9A01 显示 |
-| Day 18 | 系统集成 | UART 通信协议、4 模切换、音频流水线联调 |
+| 天数 Day | 主题 Topic   | 核心内容 Key Content                          |
+| -------- | ------------ | --------------------------------------------- |
+| Day 16   | 键盘固件开发 | ESP-IDF FreeRTOS 任务架构、按键扫描 + USB HID |
+| Day 17   | 旋钮固件开发 | LVGL UI + SimpleFOC 力反馈 + GC9A01 显示      |
+| Day 18   | 系统集成     | UART 通信协议、4 模切换、音频流水线联调       |
 
 ### 第五阶段：组装调试与展示（Day 19-20）| Phase 5: Assembly & Demo
 
-| 天数 Day | 主题 Topic | 核心内容 Key Content |
-|---|---|---|
-| Day 19 | 焊接组装与调试 | 12 块 PCB 焊接、3D 打印外壳组装、全系统联调 |
-| Day 20 | 项目展示与总结 | 成果演示、Demo 网站部署、技术分享、复盘总结 |
+| 天数 Day | 主题 Topic     | 核心内容 Key Content                        |
+| -------- | -------------- | ------------------------------------------- |
+| Day 19   | 焊接组装与调试 | 12 块 PCB 焊接、3D 打印外壳组装、全系统联调 |
+| Day 20   | 项目展示与总结 | 成果演示、Demo 网站部署、技术分享、复盘总结 |
 
 ---
 
 ## 评分标准 | Grading Rubric
 
-| 维度 Dimension | 权重 Weight | 说明 Description |
-|---|---|---|
-| 技术实现 Technical Implementation | 40 分 | 功能完整度、代码质量、PCB 设计合理性 |
-| 文档质量 Documentation Quality | 20 分 | README、注释、原理图标注、接线图 |
-| 演示展示 Final Presentation | 20 分 | 现场演示清晰度、功能展示完整性 |
-| Demo 网站 Project Demo Website | 15 分 | 在线项目展示网站（可访问性、内容完整性、视觉呈现） |
-| 进度汇报 Check-in Reports | 10 分 | 每周汇报的质量与及时性 |
-| 团队协作 & 学习态度 Collaboration & Attitude | 10 分 | Git 提交记录、分工合理性、互助精神 |
-| **总分 Total** | **115 分** | |
+| 维度 Dimension                               | 权重 Weight      | 说明 Description                                   |
+| -------------------------------------------- | ---------------- | -------------------------------------------------- |
+| 技术实现 Technical Implementation            | 40 分            | 功能完整度、代码质量、PCB 设计合理性               |
+| 文档质量 Documentation Quality               | 20 分            | README、注释、原理图标注、接线图                   |
+| 演示展示 Final Presentation                  | 20 分            | 现场演示清晰度、功能展示完整性                     |
+| Demo 网站 Project Demo Website               | 15 分            | 在线项目展示网站（可访问性、内容完整性、视觉呈现） |
+| 进度汇报 Check-in Reports                    | 10 分            | 每周汇报的质量与及时性                             |
+| 团队协作 & 学习态度 Collaboration & Attitude | 10 分            | Git 提交记录、分工合理性、互助精神                 |
+| **总分 Total**                         | **115 分** |                                                    |
 
 > 详细的评分细则请参阅 [curriculum/grading-rubric.md](curriculum/grading-rubric.md)。
 > For detailed grading criteria, see [curriculum/grading-rubric.md](curriculum/grading-rubric.md)。
 
 ### 等级对照 | Grade Scale
 
-| 等级 Grade | 分数 Score | 说明 Description |
-|---|---|---|
-| A (优秀 Excellent) | 100-115 | 全部功能完成，文档优秀，展示出色，Demo 网站完善 |
-| B (良好 Good) | 85-99 | 主要功能完成，文档和展示质量良好 |
-| C (合格 Pass) | 70-84 | 基本功能完成，文档和展示达标 |
-| D (需改进 Needs Improvement) | 60-69 | 部分功能完成，需补交材料 |
-| F (不合格 Fail) | <60 | 未能完成基本要求 |
+| 等级 Grade                   | 分数 Score | 说明 Description                                |
+| ---------------------------- | ---------- | ----------------------------------------------- |
+| A (优秀 Excellent)           | 100-115    | 全部功能完成，文档优秀，展示出色，Demo 网站完善 |
+| B (良好 Good)                | 85-99      | 主要功能完成，文档和展示质量良好                |
+| C (合格 Pass)                | 70-84      | 基本功能完成，文档和展示达标                    |
+| D (需改进 Needs Improvement) | 60-69      | 部分功能完成，需补交材料                        |
+| F (不合格 Fail)              | <60        | 未能完成基本要求                                |
 
 ---
 
@@ -419,58 +419,59 @@ project-03-4mode-keyboard/
 
 以下为推荐搜索关键词，可在 B 站找到大量优质教程：
 
-| 关键词 Keyword | 主题 Topic | 说明 Description |
-|---|---|---|
-| ESP32-S3 键盘 | ESP32-S3 keyboard | ESP32-S3 键盘开发教程 |
-| FOC 电机控制 | FOC motor control | 磁场定向控制原理与实现 |
-| SimpleFOC 教程 | SimpleFOC tutorial | 开源 FOC 库使用教程 |
-| 嘉立创 EDA 4层板 | JLCEDA 4-layer PCB | 四层板设计教程 |
-| LVGL 入门 | LVGL beginner | 嵌入式图形界面开发 |
-| ESP-IDF 开发 | ESP-IDF development | ESP32 官方开发框架 |
-| 移位寄存器 74HC165 | 74HC165 shift register | SPI 按键扫描原理 |
-| I2S 音频 ESP32 | I2S audio ESP32 | ESP32 I2S 音频开发 |
+| 关键词 Keyword     | 主题 Topic             | 说明 Description       |
+| ------------------ | ---------------------- | ---------------------- |
+| ESP32-S3 键盘      | ESP32-S3 keyboard      | ESP32-S3 键盘开发教程  |
+| FOC 电机控制       | FOC motor control      | 磁场定向控制原理与实现 |
+| SimpleFOC 教程     | SimpleFOC tutorial     | 开源 FOC 库使用教程    |
+| 嘉立创 EDA 4层板   | JLCEDA 4-layer PCB     | 四层板设计教程         |
+| LVGL 入门          | LVGL beginner          | 嵌入式图形界面开发     |
+| ESP-IDF 开发       | ESP-IDF development    | ESP32 官方开发框架     |
+| 移位寄存器 74HC165 | 74HC165 shift register | SPI 按键扫描原理       |
+| I2S 音频 ESP32     | I2S audio ESP32        | ESP32 I2S 音频开发     |
 
 #### 特别推荐 | Featured Videos
 
 1. **[开源] 历时 9 个月，我终于完成了承载我所有幻想的机械键盘**
+
    - 链接：在 B 站搜索标题即可
    - 推荐理由：**本项目的原始灵感来源**，完整展示了幻想键盘的所有功能
    - Recommended: The original inspiration for this project, showcasing all features of FantasyKB.
-
 2. **稚辉君 瀚文键盘 HelloWord-Keyboard**
+
    - 来源：嘉立创开源硬件平台
    - 推荐理由：移位寄存器按键扫描方案的参考来源，无刷电机在键盘上的开创性应用
    - Recommended: The origin of the shift-register key scanning approach and brushless motor in keyboards.
-
 3. **X-Knob (SmartKnob + SurfaceDial)**
+
    - GitHub: https://github.com/SmallPound/X-Knob
    - 推荐理由：FOC 旋钮 + LVGL + SurfaceDial 功能的参考项目
    - Recommended: Reference project for FOC knob + LVGL + SurfaceDial.
 
 ### GitHub 开源项目 | Open-Source Projects
 
-| 项目 Project | Stars | 说明 Description | 本项目参考 Reference |
-|---|---|---|---|
-| [承载我所有幻想的键盘](https://oshwhub.com/ran-pang/multifunctional-keyboard) | - | 本项目的直接来源 | 核心参考 Core reference |
-| [HelloWord-Keyboard (瀚文)](https://oshwhub.com/hiwanz/wand-keyboard) | - | 稚辉君瀚文键盘，移位寄存器 + 无刷电机 | 按键扫描、电机方案 |
-| [X-Knob](https://github.com/SmallPound/X-Knob) | 1k+ | LVGL + SmartKnob + SurfaceDial | 旋钮 FOC + UI |
-| [SimpleFOC](https://github.com/simplefoc/Arduino-FOC) | 3k+ | 开源 FOC 电机控制库 | 电机控制核心库 |
-| [LVGL](https://github.com/lvgl/lvgl) | 16k+ | 嵌入式图形库 | 旋钮 LCD UI |
-| [ESP-IDF](https://github.com/espressif/esp-idf) | 13k+ | ESP32 官方开发框架 | 键盘 & 接收器固件 |
-| [QMK Firmware](https://github.com/qmk/qmk_firmware) | 18k+ | 开源键盘固件 | 键盘功能参考 |
+| 项目 Project                                                               | Stars | 说明 Description                      | 本项目参考 Reference    |
+| -------------------------------------------------------------------------- | ----- | ------------------------------------- | ----------------------- |
+| [承载我所有幻想的键盘](https://oshwhub.com/ran-pang/multifunctional-keyboard) | -     | 本项目的直接来源                      | 核心参考 Core reference |
+| [HelloWord-Keyboard (瀚文)](https://oshwhub.com/hiwanz/wand-keyboard)         | -     | 稚辉君瀚文键盘，移位寄存器 + 无刷电机 | 按键扫描、电机方案      |
+| [X-Knob](https://github.com/SmallPound/X-Knob)                                | 1k+   | LVGL + SmartKnob + SurfaceDial        | 旋钮 FOC + UI           |
+| [SimpleFOC](https://github.com/simplefoc/Arduino-FOC)                         | 3k+   | 开源 FOC 电机控制库                   | 电机控制核心库          |
+| [LVGL](https://github.com/lvgl/lvgl)                                          | 16k+  | 嵌入式图形库                          | 旋钮 LCD UI             |
+| [ESP-IDF](https://github.com/espressif/esp-idf)                               | 13k+  | ESP32 官方开发框架                    | 键盘 & 接收器固件       |
+| [QMK Firmware](https://github.com/qmk/qmk_firmware)                           | 18k+  | 开源键盘固件                          | 键盘功能参考            |
 
 ### 官方文档 | Official Documentation
 
-| 文档 Document | 链接 URL | 说明 Description |
-|---|---|---|
-| ESP-IDF 官方文档 | https://docs.espressif.com/projects/esp-idf/ | ESP32-S3 开发权威文档 |
-| SimpleFOC 文档 | https://docs.simplefoc.com/ | FOC 电机控制入门与 API |
-| LVGL 文档 | https://docs.lvgl.io/ | 嵌入式图形界面开发 |
-| 嘉立创 EDA 文档 | https://lceda.cn/ | PCB 设计工具（在线版）|
-| ESP32-S3 技术参考手册 | https://www.espressif.com/ | 芯片数据手册与参考设计 |
-| ESP-BOX 硬件设计 | https://github.com/espressif/esp-box | 音频子系统参考设计 |
-| AS5047P 数据手册 | AMS 官网 | 14 位磁编码器技术文档 |
-| TMC6300 数据手册 | Trinamic 官网 | 三相 BLDC 驱动器技术文档 |
+| 文档 Document         | 链接 URL                                     | 说明 Description         |
+| --------------------- | -------------------------------------------- | ------------------------ |
+| ESP-IDF 官方文档      | https://docs.espressif.com/projects/esp-idf/ | ESP32-S3 开发权威文档    |
+| SimpleFOC 文档        | https://docs.simplefoc.com/                  | FOC 电机控制入门与 API   |
+| LVGL 文档             | https://docs.lvgl.io/                        | 嵌入式图形界面开发       |
+| 嘉立创 EDA 文档       | https://lceda.cn/                            | PCB 设计工具（在线版）   |
+| ESP32-S3 技术参考手册 | https://www.espressif.com/                   | 芯片数据手册与参考设计   |
+| ESP-BOX 硬件设计      | https://github.com/espressif/esp-box         | 音频子系统参考设计       |
+| AS5047P 数据手册      | AMS 官网                                     | 14 位磁编码器技术文档    |
+| TMC6300 数据手册      | Trinamic 官网                                | 三相 BLDC 驱动器技术文档 |
 
 ### 推荐书籍 | Recommended Books
 
@@ -492,6 +493,7 @@ This project is significantly harder than the original 16-key macro keyboard. Ho
 
 **Q: 如果我只能完成部分功能怎么办？**
 A: 评分采用分级制（A/B/C/D/F），部分完成也能获得相应分数。例如：
+
 - 完成按键扫描 + USB 有线 = 可获得 C 等级
 - 再加上无线通信 + RGB = 可获得 B 等级
 - 完成全部功能 + FOC 旋钮 + 语音 = 可获得 A 等级
@@ -505,14 +507,14 @@ A: 本项目涉及 12 块 PCB、3 颗 ESP32-S3、FOC 无刷电机、音频编解
 
 Why does the budget exceed 500 CNY? The project involves 12 PCBs, 3x ESP32-S3, FOC motor, audio codecs, etc. Cost reduction options:
 
-| 精简方案 Simplification | 节省 Savings | 说明 Description |
-|---|---|---|
-| 去掉旋钮模块 Remove knob module | -¥82.50 | 不做 FOC 旋钮，改用普通 EC11 编码器 (-¥80) |
-| 减少到 1 颗 ESP32-S3 | -¥50.00 | 旋钮和接收器共用或去掉 |
-| 去掉音频子系统 Remove audio | -¥15.00 | 去掉 ES7210/ES8311/NS4150B |
-| 简化 PCB 数量 Reduce PCBs | -¥60.00 | 合并小板，减少到 6-8 块 |
-| 自己焊接代替 SMT | -¥125.00 | 手工焊接所有元件 |
-| 减少按键数量 Fewer keys (40-50) | -¥100.00 | 精简键盘布局 |
+| 精简方案 Simplification         | 节省 Savings | 说明 Description                            |
+| ------------------------------- | ------------ | ------------------------------------------- |
+| 去掉旋钮模块 Remove knob module | -¥82.50     | 不做 FOC 旋钮，改用普通 EC11 编码器 (-¥80) |
+| 减少到 1 颗 ESP32-S3            | -¥50.00     | 旋钮和接收器共用或去掉                      |
+| 去掉音频子系统 Remove audio     | -¥15.00     | 去掉 ES7210/ES8311/NS4150B                  |
+| 简化 PCB 数量 Reduce PCBs       | -¥60.00     | 合并小板，减少到 6-8 块                     |
+| 自己焊接代替 SMT                | -¥125.00    | 手工焊接所有元件                            |
+| 减少按键数量 Fewer keys (40-50) | -¥100.00    | 精简键盘布局                                |
 
 > 精简后最低成本约 ¥500-600。Simplified minimum cost is approximately ¥500-600.
 
@@ -557,6 +559,7 @@ The original project is on OSHWHub at the link above. It includes complete schem
 
 **Q: 原项目用了哪些参考项目？**
 A: 主要参考了两个开源项目：
+
 1. **稚辉君的瀚文键盘 (HelloWord-Keyboard)** -- 移位寄存器按键扫描和无刷电机在键盘上的应用
 2. **叮叮木石的 X-Knob** -- SmartKnob 与 SurfaceDial 的结合
 
@@ -564,10 +567,10 @@ A: 主要参考了两个开源项目：
 
 ## 与原项目的关系 | Relationship to Source Project
 
-| 项目 Project | 作者 Author | 平台 Platform | 定位 Positioning |
-|---|---|---|---|
-| 承载我所有幻想的键盘 | ran-pang | [嘉立创 OSHWHub](https://oshwhub.com/ran-pang/multifunctional-keyboard) | 开源硬件项目 Original open-source project |
-| 幻想键盘 FantasyKB | 本课程改编 | 本仓库 This repo | 教学课程改编 Educational adaptation |
+| 项目 Project         | 作者 Author | 平台 Platform                                                        | 定位 Positioning                          |
+| -------------------- | ----------- | -------------------------------------------------------------------- | ----------------------------------------- |
+| 承载我所有幻想的键盘 | ran-pang    | [嘉立创 OSHWHub](https://oshwhub.com/ran-pang/multifunctional-keyboard) | 开源硬件项目 Original open-source project |
+| 幻想键盘 FantasyKB   | 本课程改编  | 本仓库 This repo                                                     | 教学课程改编 Educational adaptation       |
 
 ### 主要改动 | Key Adaptations
 
