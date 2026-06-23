@@ -20,13 +20,12 @@ Before any soldering or assembly, verify all components are present and in good 
 |---|---|---|---|
 | ESP32-S3-WROOM-1 模组 | N16R8 (16MB Flash, 8MB PSRAM) | 1 | [ ] |
 | CH342F USB 转串口芯片 | SSOP-20 | 1 | [ ] |
-| CH9350 USB HID 芯片 | LQFP-48 | 1 | [ ] |
-| GL850G USB HUB 控制器 | LQFP-48 | 1 | [ ] |
-| 74HC165 移位寄存器 | DIP-16 / SOIC-16 | 5 | [ ] |
-| 74HC138 译码器 | DIP-16 / SOIC-16 | 2 | [ ] |
-| AMS1117-3.3 稳压器 | SOT-223 | 2 | [ ] |
+| SL2.1A USB HUB 控制器 | QFN | 1 | [ ] |
+| GL823K USB 存储控制 | QFN | 1 | [ ] |
+| 74HC165 移位寄存器 | SOP-16 | 10 | [ ] |
+| ME6217C33 稳压器 | SOT-23-5 | 2 | [ ] |
 | TP4056 锂电池充电 IC | SOP-8 | 1 | [ ] |
-| 3.7V 锂电池 | 103040 (1000mAh) | 1 | [ ] |
+| 3.7V 锂电池 | 103040 (3000mAh) | 1 | [ ] |
 | USB Type-C 母座 | 16P 全功能 | 2 | [ ] |
 | 磁吸连接器 | 5P 磁吸 POGO PIN | 8 组 | [ ] |
 | FPC 连接器 | 0.5mm 间距 翻盖式 | 6 | [ ] |
@@ -45,8 +44,8 @@ Before any soldering or assembly, verify all components are present and in good 
 
 | 检查项 Item | 规格 Specification | 数量 Qty | 状态 Status |
 |---|---|---|---|
-| 旋钮主控板 Knob main PCB | ESP32-S3-MINI-1 | 1 | [ ] |
-| 旋钮电池板 Knob battery PCB | 3.7V 602030 锂电池 + TP4056 + DW01A | 1 | [ ] |
+| 旋钮主控板 Knob main PCB | ESP32-S3-WROOM-1-N16R8 | 1 | [ ] |
+| 旋钮电池板 Knob battery PCB | 3.7V 802025 锂电池 + TP4056 + DW01A | 1 | [ ] |
 | 旋钮屏幕转接板 Screen adapter PCB | GC9A01 圆形 LCD (1.28寸 240x240) 接口 | 1 | [ ] |
 | TMC6300 无刷电机驱动 | QFN-20 | 1 | [ ] |
 | AS5047P 磁编码器 | TSSOP-14 | 1 | [ ] |
@@ -58,7 +57,7 @@ Before any soldering or assembly, verify all components are present and in good 
 
 | 检查项 Item | 规格 Specification | 数量 Qty | 状态 Status |
 |---|---|---|---|
-| ESP32-S3 接收器板 | ESP32-S3-MINI-1 + CH9350 | 1 | [ ] |
+| ESP32-S3 接收器板 | ESP32-S3-WROOM-1-N8（原生 USB HID） | 1 | [ ] |
 | USB Type-A 公头 | USB 2.0 | 1 | [ ] |
 
 ### 通用元件 | Common Components
@@ -156,9 +155,9 @@ Solder lowest-profile components first, tallest components last.
 
 ```
 焊接顺序 Soldering order:
-1. GL850G USB HUB 控制器 — 扩展 USB 端口
+1. SL2.1A USB HUB 控制器 — 扩展 USB 端口
 2. CH342F USB 转串口 — ESP32-S3 调试/下载
-3. CH9350 USB HID — 键盘数据上传到 PC
+3. GL823K USB 存储控制 — U 盘模拟
 4. USB 差分对电阻 (22 ohm) + ESD 保护
 5. USB HUB 下行端口去耦电容
 
@@ -172,18 +171,16 @@ USB 信号走线注意 USB signal routing notes:
 
 ```
 焊接顺序 Soldering order:
-1. 74HC165 (x5) — 并行转串行输入，读取按键状态
-2. 74HC138 (x2) — 3-8 译码器，选择扫描行/列
-3. 去耦电容 (每个 IC 旁 100nF)
-4. SPI 总线上拉电阻
+1. 74HC165 (x10) — 并行转串行输入，读取按键状态（10 片级联覆盖 75 键）
+2. 去耦电容 (每个 IC 旁 100nF)
+3. SPI 总线上拉电阻
 
 链路连接 Daisy-chain connection:
-ESP32-S3 SPI → 74HC165 #1 → 74HC165 #2 → ... → 74HC165 #5
+ESP32-S3 SPI → 74HC165 #1 → 74HC165 #2 → ... → 74HC165 #10
                   ↑                                        ↑
                PL (并行加载)                            Q7' (串行输出)
 
-5 片 74HC165 可读取 5 x 8 = 40 个并行输入
-2 片 74HC138 可选择最多 16 行/列
+10 片 74HC165 可读取 10 x 8 = 80 个并行输入（覆盖 75 键 + 余量）
 ```
 
 ---
@@ -275,7 +272,7 @@ ESP32-S3 SPI → 74HC165 #1 → 74HC165 #2 → ... → 74HC165 #5
 
 ```
 焊接顺序:
-1. ESP32-S3-MINI-1 模组
+1. ESP32-S3-WROOM-1-N16R8 模组
 2. AS5047P 磁编码器 (SPI 接口)
 3. TMC6300 无刷电机驱动 (QFN-20，需热风枪)
 4. HX711 称重传感器 ADC (读取应变片)
@@ -299,7 +296,7 @@ TMC6300 安装注意:
 元件:
 - TP4056 充电 IC
 - DW01A 保护 IC + 8205A MOSFET
-- 3.7V 602030 锂电池 (300mAh)
+- 3.7V 802025 锂电池 (500mAh)
 - 磁吸充电触点
 
 焊接注意:
@@ -344,17 +341,15 @@ TMC6300 安装注意:
 
 ```
 接收器元件:
-- ESP32-S3-MINI-1 (运行 ESP-NOW / 2.4GHz 接收)
-- CH9350 USB HID 芯片
+- ESP32-S3-WROOM-1-N8 (运行 ESP-NOW / 2.4GHz 接收，原生 USB HID)
 - USB Type-A 公头
 - 状态指示 LED
 
 焊接顺序:
-1. ESP32-S3-MINI-1
-2. CH9350
-3. USB Type-A 公头
-4. LED + 电阻
-5. 去耦电容
+1. ESP32-S3-WROOM-1-N8
+2. USB Type-A 公头
+3. LED + 电阻
+4. 去耦电容
 
 注意:
 - Type-A 公头焊盘较大，需要较多焊锡
@@ -452,7 +447,7 @@ FPC 连接器操作:
 │  ┌──────────────────────────┐       │
 │  │     PCB 组装体            │       │
 │  │  [ESP32-S3] [USB Hub]    │       │
-│  │  [74HC165] [74HC138]     │       │
+│  │  [74HC165 x10] [Audio]   │       │
 │  │  [Audio]   [Power]       │       │
 │  └──────────────────────────┘       │
 │                                      │
@@ -571,7 +566,7 @@ FPC 连接器操作:
 | 电池极性反 | 保护电路动作或损坏 | 红线接负极 | 立即断开，检查保护 IC |
 | TMC6300 散热不良 | 电机抖动或驱动过热 | 底部焊盘未焊 | 重新加热底部焊盘 |
 | Type-C 焊盘脱落 | USB 不工作 | 过热或暴力拔插 | 飞线到附近焊盘 |
-| CH9350 不识别 | 键盘数据无法上传 | HID 描述符配置错误 | 检查固件配置 |
+| USB HID 不识别 | 键盘数据无法上传 | ESP32-S3 原生 USB HID 描述符配置错误 | 检查固件配置（TinyUSB） |
 | AS5047P 角度跳变 | 旋钮位置读数不稳 | 磁铁距离太远/太近 | 调整磁铁高度到 1-1.5mm |
 
 ---

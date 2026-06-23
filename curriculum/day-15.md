@@ -1,12 +1,15 @@
-# Day 15: PCB布局布线 — 子板与接收器 | PCB Layout — Sub-boards & Receiver + Gerber Export
+# Day 15: PCB布局收尾与 Gerber 导出 | PCB Layout Wrap-up & Gerber Export
+
+> **夏令营体验档**：主线只做 1 块双层主控板——今天导出它的 Gerber 并下单嘉立创。旋钮板/接收器板/音频板等子板布局列为全配档参考，主线可只看不做。
+>
+> **Experiential bar**: the main line makes only 1 double-layer mainboard — today you export its Gerber and order from JLCPCB. Knob/receiver/audio sub-board layouts are full-tier reference; the main line can just read without doing.
 
 > **今日目标 Today's Goals:**
-> - 完成旋钮主板布局（4 层 ENIG 沉金工艺）
-> - 完成接收器板、音频板、方向键板、LED 板等子板布局
-> - 导出全部 12 块 PCB 的 Gerber 文件
-> - 提交嘉立创打样订单
+> - 完成主控板 PCB 收尾，导出双层板 Gerber
+> - 提交嘉立创打样订单（主线 1 块双层板）
+> - 了解全配档子板（旋钮板/接收器板/音频板）的布局要点（参考）
 >
-> **产出 Deliverable:** 12 块 PCB 的 Gerber 文件 + 嘉立创打样订单截图
+> **产出 Deliverable:** 主控板 Gerber 文件 + 嘉立创打样订单截图
 
 ---
 
@@ -152,14 +155,14 @@ The mainboard is the brain; sub-boards are its limbs and senses. The knob board 
 
 | 参数 Parameter | 值 Value | 说明 Notes |
 |---|---|---|
-| 板层数 Layers | 4 层（主控板、旋钮板、接收器板）/ 2 层（其他） | 按需 |
+| 板层数 Layers | 2 层（主线主控板）| 双层板够用 |
 | 板厚 Thickness | 1.6mm | 标准 |
 | 铜厚 Copper Weight | 1 oz (35um) | 标准 |
 | 阻焊颜色 Solder Mask | 绿色 / 黑色 | 按组选择 |
 | 丝印颜色 Silkscreen | 白色 | 标准 |
-| 表面处理 Surface Finish | ENIG（旋钮板）/ HASL（其他） | — |
+| 表面处理 Surface Finish | 无铅喷锡 HASL（学生手焊友好）| 主线不用 ENIG |
 | 数量 Quantity | 5 片 | 嘉立创最低起订 |
-| 是否贴片 SMT Assembly | 否（手工焊接） | 节约成本 |
+| 是否贴片 SMT Assembly | 否（手工焊接）| 主线学生手焊通孔 + 简单贴片 |
 
 **下单步骤 Order Steps:**
 1. 登录 https://www.jlc.com/
@@ -177,23 +180,23 @@ The mainboard is the brain; sub-boards are its limbs and senses. The knob board 
 
 在 Day 11-15 这一周里，你完成了：
 1. 学习了 PCB 设计基础概念和嘉立创 EDA 工具
-2. 绘制了键盘主控板完整原理图（ESP32-S3 + 电源 + SPI + USB）
-3. 绘制了音频子系统、WS2812B 链、磁吸接口等子板原理图
-4. 学习了 4 层板层叠结构和阻抗控制
-5. 完成了全部 12 块 PCB 的布局布线和 Gerber 导出
+2. 跟教程画了键盘主控板原理图（ESP32-S3 + 电源 + 74HC165 + USB）
+3. 了解了音频子系统、WS2812B 链等子板原理图（全配档参考）
+4. 学习了双层板结构与铺地铜概念
+5. 完成了主控板双层 PCB 的布局布线和 Gerber 导出（主线）
 6. 向嘉立创提交了打样订单
 
 ---
 
 ## 今日作业 | Homework
 
-1. **导出全部 Gerber 文件**：12 块 PCB，每块一个压缩包
+1. **导出主控板 Gerber 文件**：1 块双层板，一个压缩包
 2. **提交嘉立创打样订单**：截图订单确认页面
 3. **完成第三周进度汇报**：详见 assignments/week-3-checkin.md
 4. **回答思考题**：
-   - 为什么旋钮板需要 ENIG 沉金而其他板可以用 HASL？
+   - 双层板为什么底层铺地铜？四层板多了什么？
    - 如果 Gerber 文件中的板框层 (GKO) 缺失会怎样？
-   - 12 块 PCB 能否合并到一张大板上（拼板 V-cut）？有什么好处？
+   - 12 块 PCB 拼板（V-cut）有什么好处？（全配档参考）
 
 ---
 

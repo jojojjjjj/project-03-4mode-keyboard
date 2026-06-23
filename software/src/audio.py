@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+# ==============================================================================
+# ⚠️ 教学模拟桩 | TEACHING SIMULATION STUB — NOT BURNABLE FIRMWARE
+# 纯 Python 演示 I2S/ADC/DAC 音频管线原理，不能烧进 ESP32-S3。
+# 真音频固件参考 ESP-BOX 官方示例。
+# Pure-Python demo of the I2S/ADC/DAC audio pipeline, NOT flashable to
+# ESP32-S3. Real audio firmware references the official ESP-BOX examples.
+# ==============================================================================
 """
 音频管线模拟模块
 Audio Pipeline Simulation Module

@@ -15,25 +15,47 @@
 
 ## 项目简介 | Project Overview
 
-"幻想键盘"是一款 4 模无线机械键盘，集成 FOC 无刷电机旋钮屏、语音交互、USB Hub、磁吸扩展接口等多项前沿功能。学生将在 20 天的课程中，从电子学基础出发，逐步完成子系统原型验证、12 块 PCB 设计、固件开发与最终组装调试，亲手打造一台功能丰富的全尺寸机械键盘。
+> **夏令营主线 = 精简档纯键盘**：1 颗 ESP32-S3 + 按键扫描 + USB HID + 一种无线 + RGB，PCB 收到 1-2 块双层板学生手焊，成本 < ¥500。FOC 旋钮、语音、USB Hub、磁吸扩展等列为**可选进阶**，全配档仅作高配参考。下面先描述主线，再列全配档的完整功能。
+>
+> **Summer-camp main line = simplified pure keyboard**: 1× ESP32-S3 + key scan + USB HID + one wireless + RGB, PCB shrunk to 1-2 double-layer boards student-soldered, cost < ¥500. The FOC knob, voice, USB Hub, and magnetic expansion are **optional/advanced**; the full tier is a high-end reference only. The main line is described first, then the full feature set.
 
-"FantasyKB" is a 4-mode wireless mechanical keyboard integrating a FOC brushless motor knob with circular LCD, voice interaction, USB hub, and magnetic expansion ports. Over 20 days, students will progress from electronics fundamentals through subsystem prototyping, designing 12 PCBs, firmware development, and final assembly — ultimately producing a fully featured mechanical keyboard.
+### 主线（精简档，本课程实际目标）| Main line (simplified tier, actual course target)
 
-本项目涵盖 SPI 移位寄存器按键扫描（74HC165）、FOC 磁场定向电机控制、I2S 音频流水线、ESP-NOW 2.4GHz 无线通信、磁编码器（AS5047P）、USB HID 人机接口协议等核心技术。课程以实践驱动，每天 6-8 小时，采用模块化教学，确保学生即使无法完成全部功能也能取得阶段性成果。
+学生将在 20 天内完成一台**纯键盘**：45 键布局、ESP32-S3 主控、74HC165 移位扫描、USB HID 有线、至少一种无线（BLE 或 ESP-NOW）、WS2812B 背光。从电子学基础出发，逐步完成面包板原型 → 双层 PCB 设计 → 固件开发 → 焊接组装调试。
 
-This project covers SPI shift-register key scanning (74HC165), FOC motor control, I2S audio pipeline, ESP-NOW 2.4GHz wireless, magnetic encoder (AS5047P), USB HID protocol, and more. The course is practice-driven at 6-8 hours/day with a modular approach — students can achieve partial success even if not every subsystem is completed.
+Over 20 days students build a **pure keyboard**: 45-key layout, ESP32-S3 MCU, 74HC165 shift-scan, USB HID wired, at least one wireless mode (BLE or ESP-NOW), WS2812B backlight. From electronics fundamentals through breadboard prototype → double-layer PCB design → firmware → soldering assembly.
+
+### 全配档（高配参考，非主线）| Full tier (high-end reference, not the main line)
+
+"幻想键盘"全配档是一款 4 模无线机械键盘，集成 FOC 无刷电机旋钮屏、语音交互、USB Hub、磁吸扩展接口等多项前沿功能。这是开源参考项目的完整形态，本课程不要求完成，仅供学有余力的同学挑战。
+
+The full-tier "FantasyKB" is a 4-mode wireless mechanical keyboard integrating a FOC knob, voice interaction, USB Hub, and magnetic expansion — the complete form of the open-source reference project. The course does not require completing it; it's a stretch goal for advanced students.
+
+本项目核心技术涵盖 SPI 移位寄存器按键扫描（74HC165）、I2S 音频流水线、ESP-NOW 2.4GHz 无线通信、USB HID 人机接口协议等。课程以实践驱动，每天 6-8 小时，采用模块化教学，确保学生即使无法完成全部功能也能取得阶段性成果。
+
+Core technologies include SPI shift-register key scanning (74HC165), I2S audio pipeline, ESP-NOW 2.4GHz wireless, USB HID protocol, and more. The course is practice-driven at 6-8 hours/day with a modular approach — students can achieve partial success even if not every subsystem is completed.
 
 ---
 
 ## 最终效果 | Final Result
 
-完成本项目后，你将拥有一台：
+完成本课程**主线（精简档）**后，你将拥有一台：
 
-Upon completing this project, you will have:
+After completing the **main line (simplified tier)**, you will have:
+
+- **~45 键机械键盘** — 热插拔轴座，支持自定义键位
+- **USB HID 有线 + 至少一种无线** — USB 有线 + BLE 或 ESP-NOW（二选一或多）
+- **WS2812B RGB 背光** — 每键独立 RGB，多种灯效模式
+- **1-2 块双层 PCB** — 学生手焊的完整硬件系统
+- **3D 打印外壳** — 个性化外观设计
+
+> 以下为**全配档（可选进阶 / 高配参考）**功能，主线不要求完成，仅供学有余力的同学挑战：
+
+> The following are **full-tier (optional/advanced, high-end reference)** features — not required for the main line, a stretch goal for advanced students:
 
 - **~75 键全尺寸机械键盘** — 完整布局，热插拔轴座，支持自定义键位
 - **4 模无线连接** — USB 有线 / 蓝牙 / WiFi / 2.4GHz (ESP-NOW) 自由切换
-- **FOC 无刷电机旋钮** — 磁吸可拆卸，带触觉力反馈和 GC9A01 1.28" 圆形 LCD
+- **FOC 无刷电机旋钮**（可选进阶）— 磁吸可拆卸，带触觉力反馈和 GC9A01 1.28" 圆形 LCD
 - **语音交互** — 双麦克风录音 + 立体声扬声器，支持语音指令
 - **USB Hub** — 4 口 USB 2.0 Hub + 双通道 USB-TTL + U 盘模拟
 - **鼠标数据转发** — 鼠标插入键盘 Type-A 口，数据随无线模式一并转发
@@ -46,6 +68,10 @@ Upon completing this project, you will have:
 ---
 
 ## 核心功能 | Core Features
+
+> 下表为**全配档**的完整功能清单（高配参考）。本课程主线（精简档）只做：4 模连接中的 USB + 一种无线、~45 键扫描、RGB 灯效；FOC 旋钮/语音/USB Hub/磁吸扩展/摇杆均列为可选进阶。
+>
+> The table below is the **full-tier** feature list (high-end reference). The course main line (simplified tier) only does: USB + one wireless of the 4 modes, ~45-key scanning, RGB lighting; the FOC knob / voice / USB Hub / magnetic expansion / joystick are optional/advanced.
 
 | 功能 Feature | 说明 Description                                            |
 | ------------ | ----------------------------------------------------------- |
@@ -162,7 +188,11 @@ Upon completing this project, you will have:
 
 ## 硬件清单 | Hardware List
 
-### PCB 清单 | PCB List (12 块板)
+> 下表为**全配档**的 12 块 PCB 清单（高配参考）。本课程主线只设计 1 块双层主控板（+1 块小板）。
+>
+> The 12-PCB list below is the **full-tier** hardware (high-end reference). The course main line only designs 1 double-layer mainboard (+1 small board).
+
+### PCB 清单 | PCB List (全配档 12 块板，高配参考)
 
 本项目共包含 12 块 PCB，其中 4 块四层板 + 8 块双层板：
 
@@ -190,9 +220,26 @@ This project includes 12 PCBs: 4 four-layer boards + 8 two-layer boards.
 
 ## 预算总览 | Budget Summary
 
-> **重要提示 Important Note**: 本项目总预算约 ¥1,028，超出 CLAUDE.md 中 ¥500 的预算约束。这是因为该项目复杂度远超原有宏键盘项目，涉及 12 块 PCB、3 颗 ESP32-S3、FOC 电机等高成本组件。这是一个已记录的已知权衡（详见 FAQ 部分）。
+> **本课程采用精简档（主线 < ¥500）**：砍掉 FOC 旋钮、音频、USB Hub、接收器子系统，1 颗 ESP32-S3 走原生 USB HID，PCB 收到 1-2 块双层板，学生手焊通孔 + 简单贴片。全配档约 ¥1,028 仅作高配参考。
 >
-> Total budget is approximately ¥1,028, exceeding the ¥500 constraint in CLAUDE.md. This is a documented tradeoff due to the project's significantly higher complexity.
+> **The course uses the simplified tier (main line < ¥500)**: drops the FOC knob, audio, USB Hub, and receiver; 1× ESP32-S3 with native USB HID; 1-2 double-layer PCBs; student through-hole + simple SMD soldering. The full tier (~¥1,028) is a high-end reference only.
+
+### 精简档预算（本课程主线）| Simplified-tier Budget (course main line)
+
+| 类别 Category                                          | 金额 Amount (CNY)     | 说明 Description                                             |
+| ------------------------------------------------------ | --------------------- | ------------------------------------------------------------ |
+| 主控与有源器件 Main ICs & Active Components             | ¥48.50                | ESP32-S3 x1、74HC165 x6、TP4056 等（无旋钮/音频/Hub 芯片）    |
+| WS2812B RGB LED (50 颗)                                 | ¥13.00                | 45 键背光 + 余量                                             |
+| 连接器 Connectors                                       | ¥12.00                | Type-C、排针排母                                             |
+| 被动元件 Passive Components                             | ¥12.00                | 电阻、电容、二极管（0603/0805 通孔易焊）                     |
+| 机电元件 Electromechanical (switches/keycaps/hot-swap)  | ¥192.00               | 机械轴体 x45、热插拔轴座 x45、键帽套装、卫星轴                |
+| PCB 制造 PCB Manufacturing (1-2 块双层板)               | ¥20.00                | 双层板，学生手焊（无 SMT 代工）                              |
+| 3D 打印/结构件 3D Printing / Structural                | ¥65.00                | 外壳、定位板                                                 |
+| 线材及杂项 Cables & Misc                               | ¥18.00                | FPC、杜邦线、螺丝等                                          |
+| 工具消耗品 Tools (shared)                              | ¥12.00                | 焊锡/助焊剂（教室共用）                                      |
+| **精简档总计 Simplified Total**                         | **~¥402.50**          | 符合 ¥500 约束                                               |
+
+### 全配档预算（高配参考）| Full-tier Budget (reference only)
 
 | 类别 Category                                          | 金额 Amount (CNY)     | 说明 Description                                             |
 | ------------------------------------------------------ | --------------------- | ------------------------------------------------------------ |
@@ -206,7 +253,7 @@ This project includes 12 PCBs: 4 four-layer boards + 8 two-layer boards.
 | SMT 贴片 SMT Assembly                                  | ¥125.00              | 嘉立创 SMT 服务                                              |
 | 3D 打印/结构件 3D Printing / Structural                | ¥105.00              | 外壳、旋钮壳体、定位板                                       |
 | 线材及杂项 Cables & Misc                               | ¥28.00               | FPC 排线、杜邦线、螺丝等                                     |
-| **总计 Total**                                   | **~¥1,027.75** |                                                              |
+| **全配档总计 Full Total**                              | **~¥1,027.75**       | 高配参考，非本课程主线                                       |
 
 ### 核心元器件清单 | Key Component List
 
@@ -238,13 +285,30 @@ This project includes 12 PCBs: 4 four-layer boards + 8 two-layer boards.
 
 ## 软件环境 | Software Environment
 
-### 固件层（运行在 ESP32-S3 上 | Firmware on ESP32-S3）
+> **说明 Note**: `software/src/*.py` 全部是**教学模拟模块**——纯 Python，跑在 PC 上帮你理解原理，**不能烧进 ESP32-S3**。可烧录的真固件是下面"参考固件入口"列里的 ESP-IDF / PlatformIO (C/C++) 工程，分布在 day-08/09/10/16/17 课程里。
+>
+> `software/src/*.py` are **teaching simulation modules** — pure Python, run on your PC to illustrate principles, and are **NOT flashable** to ESP32-S3. The real burnable firmware is the ESP-IDF / PlatformIO (C/C++) code referenced in the day-08/09/10/16/17 lessons.
 
-| 模块 Module                  | 开发环境 IDE         | 语言 Language | 框架 Framework   | 说明 Description                  |
-| ---------------------------- | -------------------- | ------------- | ---------------- | --------------------------------- |
-| 键盘固件 Keyboard Firmware   | ESP-IDF              | C             | FreeRTOS         | 按键扫描、4 模通信、音频、USB HID |
-| 旋钮固件 Knob Firmware       | PlatformIO (VS Code) | C/C++         | LVGL + SimpleFOC | FOC 控制、LCD 显示、力反馈        |
-| 接收器固件 Receiver Firmware | ESP-IDF              | C             | ESP-NOW          | 2.4GHz 无线接收 + USB HID         |
+### 教学模拟模块（PC 上跑，不可烧录）| Teaching Simulation Modules (PC-side, not flashable)
+
+| 模块 Module | 对应原理 Principle | 说明 Description |
+| ----------- | ------------------ | ---------------- |
+| keymatrix.py | 74HC165 移位扫描 | 演示位操作与菊花链原理 |
+| oled_display.py | GC9A01 显示 | 演示 SPI 帧缓冲原理 |
+| rgb_led.py | WS2812B 灯效 | 演示单线协议与灯效算法 |
+| encoder.py | AS5047P 角度 | 演示磁编码器读取原理 |
+| usb_hid.py | USB HID 报告 | 演示 8 字节报告格式 |
+| audio.py | I2S 音频管线 | 演示 ADC/DAC 信号流 |
+| wireless.py | BLE/WiFi/ESP-NOW | 演示三种无线协议原理 |
+| foc_motor.py | FOC 数学变换 | 演示 Clarke/Park 变换原理 |
+
+### 参考固件入口（可烧录到 ESP32-S3）| Reference Firmware Entry Points (flashable)
+
+| 模块 Module                  | 开发环境 IDE         | 语言 Language | 框架 Framework   | 参考课程 Lesson        |
+| ---------------------------- | -------------------- | ------------- | ---------------- | ---------------------- |
+| 键盘固件 Keyboard Firmware   | ESP-IDF              | C             | FreeRTOS         | day-16~17（扫描+HID+无线）|
+| 接收器固件 Receiver Firmware | ESP-IDF              | C             | ESP-NOW          | day-07（ESP-NOW 示例）   |
+| 旋钮固件 Knob Firmware       | PlatformIO (VS Code) | C/C++         | LVGL + SimpleFOC | day-09~10（跟教程跑通）  |
 
 ### 工具层（运行在 PC 上 | Tools on PC）
 
@@ -288,9 +352,9 @@ python -m pytest tests/ -v
 
 ## 课程安排 | Course Schedule
 
-> 本项目扩展为 20 天课程（原宏键盘为 12 天），以容纳更复杂的硬件设计和多子系统开发。
+> 本项目为 20 天夏令营体验档课程，主线为精简档纯键盘（1 颗 ESP32-S3 + 按键扫描 + USB HID + 一种无线 + RGB，PCB 收到 1 块双层板），FOC 旋钮/音频/USB Hub 等列为可选进阶。
 >
-> Extended to 20 days (vs. 12 for the original macro keyboard) to accommodate the more complex hardware design and multi-subsystem development.
+> A 20-day summer-camp experiential course. The main line is the simplified pure keyboard (1× ESP32-S3 + key scan + USB HID + one wireless + RGB, PCB shrunk to 1 double-layer board); the FOC knob / audio / USB Hub are optional/advanced.
 
 ### 第一阶段：电子基础与 ESP32-S3 入门（Day 1-5）| Phase 1: Electronics Fundamentals
 
@@ -304,38 +368,38 @@ python -m pytest tests/ -v
 
 ### 第二阶段：子系统原型验证（Day 6-10）| Phase 2: Subsystem Prototyping
 
-| 天数 Day | 主题 Topic         | 核心内容 Key Content                         |
-| -------- | ------------------ | -------------------------------------------- |
-| Day 06   | 按键扫描子系统     | 10 片 74HC165 菊花链焊接与测试、全键扫描固件 |
-| Day 07   | FOC 电机旋钮子系统 | TMC6300 + AS5047P + SimpleFOC、力反馈原型    |
-| Day 08   | 音频子系统         | ES7210 录音 + ES8311 播放 + NS4150B 功放调试 |
-| Day 09   | 无线与 USB 子系统  | 4 模通信切换、SL2.1A Hub + CH342F + GL823K   |
-| Day 10   | 磁吸扩展与压力传感 | IIC 磁吸接口、HX711 压力传感、摇杆输入       |
+| 天数 Day | 主题 Topic             | 核心内容 Key Content                                       |
+| -------- | ---------------------- | ---------------------------------------------------------- |
+| Day 06   | 蓝牙 BLE 键盘          | BLE HID 服务、GAP/GATT、手机/电脑配对输入文字（主线无线之一）|
+| Day 07   | WiFi 与 ESP-NOW        | WiFi STA/AP、ESP-NOW 2.4GHz、4 模自动切换（主线无线之一）  |
+| Day 08   | WS2812B RGB 灯效       | RMT 驱动、彩虹/呼吸/按键响应灯效、功耗管理                  |
+| Day 09   | FOC 旋钮硬件（可选进阶）| 无刷电机原理、SimpleFOC 开环跑通、AS5047P 角度（主线选做） |
+| Day 10   | FOC 旋钮显示（可选进阶）| GC9A01 圆屏、LVGL UI、HX711 压力（主线选做）               |
 
-### 第三阶段：PCB 设计（Day 11-15）| Phase 3: PCB Design
+### 第三阶段：PCB 设计（Day 11-15，主线 1 块双层板）| Phase 3: PCB Design (main line: 1 double-layer board)
 
-| 天数 Day | 主题 Topic            | 核心内容 Key Content                        |
-| -------- | --------------------- | ------------------------------------------- |
-| Day 11   | 嘉立创 EDA 四层板入门 | 四层板设计规范、阻抗控制、层叠结构          |
-| Day 12   | 键盘主板原理图绘制    | 完整原理图：ESP32-S3 + 74HC165 + USB + 电源 |
-| Day 13   | 键盘主板 PCB 布局     | 300x120mm 四层板布局布线、DRC 检查          |
-| Day 14   | 旋钮板 + 接收器板设计 | 旋钮主板 V4 + 接收器板原理图与 PCB          |
-| Day 15   | 其余小板设计          | 方向键板、音频板、USB 板等 8 块双层板       |
+| 天数 Day | 主题 Topic              | 核心内容 Key Content                                    |
+| -------- | ----------------------- | ------------------------------------------------------- |
+| Day 11   | 嘉立创 EDA 双层板入门   | PCB 基础、双层板结构、EDA 界面、元件封装、ERC           |
+| Day 12   | 键盘主板原理图绘制      | ESP32-S3 最小系统 + 电源 + 74HC165 扫描 + USB 子系统    |
+| Day 13   | 外设原理图与双层板概念  | 音频/LED 子板原理图（全配档参考）、双层板铺地概念       |
+| Day 14   | 主板 PCB 布局布线       | 双层板布局、19.05mm 间距、USB 差分对、DRC               |
+| Day 15   | Gerber 导出与打样       | 主线 1 块双层板导出 Gerber、嘉立创下单（子板全配档参考）|
 
 ### 第四阶段：固件开发与集成（Day 16-18）| Phase 4: Firmware Development
 
-| 天数 Day | 主题 Topic   | 核心内容 Key Content                          |
-| -------- | ------------ | --------------------------------------------- |
-| Day 16   | 键盘固件开发 | ESP-IDF FreeRTOS 任务架构、按键扫描 + USB HID |
-| Day 17   | 旋钮固件开发 | LVGL UI + SimpleFOC 力反馈 + GC9A01 显示      |
-| Day 18   | 系统集成     | UART 通信协议、4 模切换、音频流水线联调       |
+| 天数 Day | 主题 Topic       | 核心内容 Key Content                                    |
+| -------- | ---------------- | ------------------------------------------------------- |
+| Day 16   | 键盘固件开发     | ESP-IDF FreeRTOS 任务架构、74HC165 扫描 + USB HID       |
+| Day 17   | USB HID 与无线固件 | TinyUSB、BLE HID、WiFi/ESP-NOW 模式切换（旋钮固件选做）|
+| Day 18   | 系统集成         | 4 模切换、系统集成联调（音频流水线全配档参考）          |
 
 ### 第五阶段：组装调试与展示（Day 19-20）| Phase 5: Assembly & Demo
 
-| 天数 Day | 主题 Topic     | 核心内容 Key Content                        |
-| -------- | -------------- | ------------------------------------------- |
-| Day 19   | 焊接组装与调试 | 12 块 PCB 焊接、3D 打印外壳组装、全系统联调 |
-| Day 20   | 项目展示与总结 | 成果演示、Demo 网站部署、技术分享、复盘总结 |
+| 天数 Day | 主题 Topic     | 核心内容 Key Content                                  |
+| -------- | -------------- | ----------------------------------------------------- |
+| Day 19   | 焊接组装与调试 | 主控板手焊（通孔+简单贴片，无 QFN）、轴体键帽、外壳  |
+| Day 20   | 项目展示与总结 | 成果演示、Demo 网站部署、技术分享、复盘总结          |
 
 ---
 
@@ -373,7 +437,6 @@ project-03-4mode-keyboard/
 ├── README.md                          # 本文件 | This file
 ├── cover.pdf                          # 项目封面 | Project cover
 ├── resources/
-│   ├── search-results.md              # 资源搜索结果 | Resource search results
 │   └── review-report.md               # 项目评审报告 | Review report
 ├── curriculum/                        # 课程文档 | Curriculum
 │   ├── overview.md                    # 课程概述 | Course overview
@@ -487,9 +550,9 @@ project-03-4mode-keyboard/
 ### 关于项目难度 | About Difficulty
 
 **Q: 这个项目是不是太难了？高中生能完成吗？**
-A: 确实，这个项目的难度远超原有的 16 键宏键盘。但课程采用模块化设计，学生不需要完成全部 12 块 PCB 和所有功能。只要完成了核心模块（按键扫描 + USB HID + 至少一种无线模式），就能获得合格成绩。每个子系统都可以独立验证，鼓励学生量力而行。
+A: 本课程按夏令营体验档设计：每方面摸过一遍、能说个大概为什么即可，不要求深学。精简档主线是纯键盘（1 颗 ESP32-S3 + 按键扫描 + USB HID + 一种无线 + RGB），FOC 旋钮、音频等列为可选进阶。只要完成核心模块（按键扫描 + USB HID + 至少一种无线模式），就能获得合格成绩。
 
-This project is significantly harder than the original 16-key macro keyboard. However, the modular course design means students don't need to complete all 12 PCBs and every feature. Completing the core modules (key scanning + USB HID + at least one wireless mode) is sufficient for a passing grade. Each subsystem can be validated independently.
+The course is designed to the summer-camp experiential bar: touch each area once and explain roughly why, no deep mastery required. The simplified main line is a pure keyboard (1× ESP32-S3 + key scan + USB HID + one wireless + RGB); the FOC knob and audio are optional/advanced. Completing the core modules (key scanning + USB HID + at least one wireless mode) earns a passing grade.
 
 **Q: 如果我只能完成部分功能怎么办？**
 A: 评分采用分级制（A/B/C/D/F），部分完成也能获得相应分数。例如：
@@ -502,21 +565,21 @@ Partial completion is graded proportionally. Key scanning + USB wired alone can 
 
 ### 关于预算 | About Budget
 
-**Q: 为什么预算超过 500 元？有办法降低成本吗？**
-A: 本项目涉及 12 块 PCB、3 颗 ESP32-S3、FOC 无刷电机、音频编解码器等高成本组件，¥1,028 是实际物料成本。降低成本的方案：
+**Q: 预算能控制在 500 元内吗？**
+A: 能。本课程默认走**精简档**（纯键盘主线）：砍掉 FOC 旋钮、音频、USB Hub、接收器子系统，1 颗 ESP32-S3 走原生 USB HID，PCB 收到 1-2 块双层板学生手焊。精简档约 ¥400，符合 ¥500 约束。全配档（含旋钮/音频/12 块 PCB/SMT 代工）约 ¥1,028，仅作高配参考。
 
-Why does the budget exceed 500 CNY? The project involves 12 PCBs, 3x ESP32-S3, FOC motor, audio codecs, etc. Cost reduction options:
+Yes. The course defaults to the **simplified tier** (pure-keyboard main line): drops the FOC knob, audio, USB Hub, and receiver; 1× ESP32-S3 with native USB HID; 1-2 double-layer PCBs student-soldered. The simplified tier is ~¥400, meeting the ¥500 constraint. The full tier (~¥1,028) is a high-end reference only.
 
 | 精简方案 Simplification         | 节省 Savings | 说明 Description                            |
 | ------------------------------- | ------------ | ------------------------------------------- |
-| 去掉旋钮模块 Remove knob module | -¥82.50     | 不做 FOC 旋钮，改用普通 EC11 编码器 (-¥80) |
-| 减少到 1 颗 ESP32-S3            | -¥50.00     | 旋钮和接收器共用或去掉                      |
+| 去掉旋钮模块 Remove knob module | -¥82.50     | 不做 FOC 旋钮（本课程主线已默认砍掉）       |
+| 减少到 1 颗 ESP32-S3            | -¥48.00     | 旋钮和接收器 MCU 去掉（主线已默认）         |
 | 去掉音频子系统 Remove audio     | -¥15.00     | 去掉 ES7210/ES8311/NS4150B                  |
-| 简化 PCB 数量 Reduce PCBs       | -¥60.00     | 合并小板，减少到 6-8 块                     |
-| 自己焊接代替 SMT                | -¥125.00    | 手工焊接所有元件                            |
-| 减少按键数量 Fewer keys (40-50) | -¥100.00    | 精简键盘布局                                |
+| 简化 PCB 数量 Reduce PCBs       | -¥124.00    | 12 块（含 4 层）→ 1-2 块双层板              |
+| 自己焊接代替 SMT                | -¥125.00    | 手工焊接通孔 + 简单贴片（主线已默认）       |
+| 减少按键数量 Fewer keys (45)    | -¥100.00    | 75 键 → 45 键精简布局                       |
 
-> 精简后最低成本约 ¥500-600。Simplified minimum cost is approximately ¥500-600.
+> 精简档实际约 ¥400，详见 hardware/BOM.md「精简档实际采购清单」。Simplified tier is ~¥400; see hardware/BOM.md.
 
 **Q: 可以多人分摊成本吗？**
 A: 强烈建议 2-3 人组队，分摊物料成本的同时也分担工作量。每人负责不同的子系统（如一人负责键盘、一人负责旋钮、一人负责固件），这在评分中也会体现团队协作能力。
@@ -541,14 +604,14 @@ A: FOC (磁场定向控制) 可以精确控制无刷电机的扭矩，实现旋�
 FOC enables precise torque control for haptic force feedback (detents, elastic return, damping). A standard EC11 encoder only detects rotation direction without force feedback. SimpleFOC library significantly simplifies FOC implementation.
 
 **Q: 12 块 PCB 设计工作量会不会太大？**
-A: 其中 8 块是简单的双层小板（如指示灯板、磁吸接口板），设计难度很低。核心设计集中在 3 块四层板（键盘主板、旋钮主板、接收器板）。课程 Phase 3（Day 11-15）专门安排了 5 天时间进行 PCB 设计。
+A: 精简档主线只设计 1 块双层主控板（+1 块小板），学生跟嘉立创 EDA 教程跑通即可，不要求从零设计 12 块。全配档的 12 块板（含 4 层板阻抗控制）仅作高配参考，Day 11-15 会讲概念但不要求全部完成。
 
-8 of the 12 PCBs are simple two-layer boards. The core complexity is in the 3 four-layer boards. Phase 3 (Day 11-15) provides 5 dedicated days for PCB design.
+The simplified main line only designs 1 double-layer mainboard (+1 small board); students follow the JLCEDA tutorial to get it through, not design all 12 from scratch. The full-tier 12 boards (with 4-layer impedance control) are a high-end reference; Day 11-15 covers the concepts without requiring all 12 to be completed.
 
 **Q: 焊接难度如何？需要什么水平？**
-A: 本项目包含 0402/0603 贴片元件和 QFN 封装 IC，焊接难度较高。建议使用嘉立创 SMT 服务贴焊主要 IC，学生只焊接通孔元件和简单贴片元件。Day 19 会专门讲解焊接技巧。
+A: 精简档主线是双层板 + 通孔元件 + 0603/0805 简单贴片，没有 QFN 封装 IC（旋钮/音频/Hub 芯片已砍掉），高中生手焊完全可完成。Day 19 会专门讲解焊接技巧。想做全配档（含 QFN）的同学可另用嘉立创 SMT 代工。
 
-The project includes 0402/0603 SMD and QFN packages. We recommend using JLCPCB SMT service for main ICs, with students soldering through-hole and simple SMD components. Day 19 covers soldering techniques.
+The simplified tier uses a double-layer board with through-hole parts + 0603/0805 simple SMD — no QFN ICs (knob/audio/hub chips removed), so high-school students can solder it by hand. Day 19 covers soldering techniques. Students wanting the full tier (with QFN) can use JLCPCB's SMT service separately.
 
 ### 关于开源项目 | About the Source Project
 

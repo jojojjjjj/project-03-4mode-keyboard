@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+# ==============================================================================
+# ⚠️ 教学模拟桩 | TEACHING SIMULATION STUB — NOT BURNABLE FIRMWARE
+# 纯 Python 演示 BLE/WiFi/ESP-NOW 通信原理，不能烧进 ESP32-S3。
+# 真无线固件见 day-07/day-17 的 ESP-IDF (C) 代码。
+# Pure-Python demo of BLE/WiFi/ESP-NOW principles, NOT flashable to ESP32-S3.
+# Real wireless firmware is the ESP-IDF (C) code in day-07/day-17.
+# ==============================================================================
 """
 无线通信模式模拟模块
 Wireless Communication Modes Simulation Module

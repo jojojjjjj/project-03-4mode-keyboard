@@ -1,4 +1,12 @@
 # -*- coding: utf-8 -*-
+# ==============================================================================
+# ⚠️ 教学模拟桩 | TEACHING SIMULATION STUB — NOT BURNABLE FIRMWARE
+# 纯 Python 演示 WS2812B 单线协议与灯效算法，不能烧进 ESP32-S3。
+# 真灯效固件见 day-08 的 ESP-IDF (C) RMT 代码。
+# Pure-Python demo of the WS2812B single-wire protocol and effects, NOT
+# flashable to ESP32-S3. Real lighting firmware is the ESP-IDF (C) RMT code
+# in day-08.
+# ==============================================================================
 """
 WS2812B RGB LED 控制模拟模块
 WS2812B RGB LED Control Simulation Module

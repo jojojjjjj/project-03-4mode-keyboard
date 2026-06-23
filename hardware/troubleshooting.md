@@ -78,7 +78,7 @@ This guide helps troubleshoot common issues in the 4-mode keyboard (ESP32-S3) pr
 | 现象 Symptom | 可能原因 Cause | 解决方法 Solution |
 |---|---|---|
 | 单个按键不工作 | 轴体引脚弯曲或轴座虚焊 | 拔出轴体检查引脚；补焊轴座 |
-| 整行不工作 | 74HC138 译码器输出断开 | 测量译码器到该行的连接 |
+| 整行不工作 | 74HC165 对应输入断开或该行线断 | 测量移位寄存器到该行的连接 |
 | 整列不工作 | 74HC165 对应输入断开 | 检查移位寄存器引脚焊接 |
 | 所有按键不工作 | SPI 总线未初始化或断线 | 示波器检查 SPI CLK/CS/MOSI/MISO 信号 |
 | 部分按键不工作 | 74HC165 链路中间断裂 | 检查 Q7' → SER 的链路连接 |
@@ -115,8 +115,8 @@ This guide helps troubleshoot common issues in the 4-mode keyboard (ESP32-S3) pr
 
 | 现象 Symptom | 可能原因 Cause | 解决方法 Solution |
 |---|---|---|
-| HUB 不被识别 | GL850G 虚焊或配置错误 | 检查 GL850G 的晶振/电阻配置 |
-| HUB 下行端口不工作 | 下行端口电源开关未开启 | 检查 GL850G PWRSW 引脚 |
+| HUB 不被识别 | SL2.1A 虚焊或配置错误 | 检查 SL2.1A 的晶振/电阻配置 |
+| HUB 下行端口不工作 | 下行端口电源开关未开启 | 检查 SL2.1A PWRSW 引脚 |
 | HUB 枚举但设备不稳定 | 上行端口信号质量差 | 检查上行 D+/D- 走线等长 |
 
 ### 4.3 CH342F 不被检测 / CH342F Not Detected

@@ -1,4 +1,14 @@
 # -*- coding: utf-8 -*-
+# ==============================================================================
+# ⚠️ 教学模拟桩 | TEACHING SIMULATION STUB — NOT BURNABLE FIRMWARE
+# 本文件是纯 Python 的教学演示，用来帮你看懂 FOC 数学变换在干什么。
+# 它不能编译进 ESP32-S3，也不能烧录——真旋钮固件请看 day-09/day-10 的
+# SimpleFOC (C/C++) 示例和参考仓库 X-Knob。这里保留的是原理讲解，不是固件。
+# This is a pure-Python teaching stub that visualizes the FOC math transforms.
+# It is NOT firmware — it will not compile or flash to ESP32-S3. Real knob
+# firmware lives in the SimpleFOC (C/C++) examples in day-09/day-10 and the
+# X-Knob reference repo. The math below is kept for teaching value only.
+# ==============================================================================
 """
 FOC (磁场定向控制) 无刷电机控制模拟模块
 FOC (Field Oriented Control) Brushless Motor Control Simulation Module

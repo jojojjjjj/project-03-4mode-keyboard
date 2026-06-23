@@ -30,9 +30,9 @@
 
 ### 为什么要学这个? | Why Learn This?
 
-前面 10 天我们在面包板上搭建原型，用 ESP-IDF 编写固件。但面包板电路松散、接触不稳定、无法携带。PCB（Printed Circuit Board，印刷电路板）将电路永久固化在板子上——可靠、紧凑、专业。本项目共有 12 块不同的 PCB，从今天开始你将逐一学会设计它们。
+前面 10 天我们在面包板上搭建原型，用 ESP-IDF 编写固件。但面包板电路松散、接触不稳定、无法携带。PCB（Printed Circuit Board，印刷电路板）将电路永久固化在板子上——可靠、紧凑、专业。本课程主线只设计 1 块双层主控板，从今天开始你将学会跟教程走通 PCB 设计的完整流程。
 
-The previous 10 days used breadboard prototypes and ESP-IDF firmware. But breadboard circuits are loose, unreliable, and not portable. A PCB permanently fixes the circuit — reliable, compact, professional. This project has 12 different PCBs, and starting today you will learn to design them all.
+The previous 10 days used breadboard prototypes and ESP-IDF firmware. But breadboard circuits are loose, unreliable, and not portable. A PCB permanently fixes the circuit — reliable, compact, professional. The main line of this course designs only 1 double-layer mainboard; starting today you'll follow the tutorial through the full PCB design flow.
 
 ---
 
@@ -41,38 +41,28 @@ The previous 10 days used breadboard prototypes and ESP-IDF firmware. But breadb
 **PCB 结构 PCB Structure:**
 
 ```
-横截面 Cross-section (4-layer board):
+横截面 Cross-section (2-layer board, 本课程主线):
 
   ┌──────────────────────────────┐
   │  丝印层 Silkscreen (文字标识)   │
   ├──────────────────────────────┤
   │  阻焊层 Solder Mask (绿色/黑色)  │
   ├──────────────────────────────┤
-  │  顶层铜 Top Copper (信号走线)    │  ← Layer 1 (Signal)
+  │  顶层铜 Top Copper (信号走线)    │  ← Layer 1 (Signal + 元件)
   ├──────────────────────────────┤
-  │  介质层 Prepreg (绝缘材料)       │
+  │  介质层 Core (绝缘材料, 1.6mm)   │
   ├──────────────────────────────┤
-  │  内层1 Inner 1 (GND 地平面)     │  ← Layer 2 (Ground)
-  ├──────────────────────────────┤
-  │  介质层 Core (绝缘材料)          │
-  ├──────────────────────────────┤
-  │  内层2 Inner 2 (电源平面)       │  ← Layer 3 (Power)
-  ├──────────────────────────────┤
-  │  介质层 Prepreg (绝缘材料)       │
-  ├──────────────────────────────┤
-  │  底层铜 Bottom Copper (信号)    │  ← Layer 4 (Signal)
+  │  底层铜 Bottom Copper (地铜铺铜) │  ← Layer 2 (GND 铺铜 + 辅助走线)
   ├──────────────────────────────┤
   │  阻焊层 Solder Mask            │
   ├──────────────────────────────┤
   │  丝印层 Silkscreen             │
   └──────────────────────────────┘
 
-  过孔 Via: 连接不同铜层的导电孔
-  ┌──┐        ┌──┐
-  │●│ ──>    │ │ │ ──> 通孔过孔 (Through-hole Via)
-  └──┘        │ │ │              盲孔 (Blind Via)
-              │ ● │              埋孔 (Buried Via)
-              └───┘
+  过孔 Via: 连接顶层和底层铜的导电孔
+  ┌──┐
+  │●│ ──> 通孔过孔 (Through-hole Via)
+  └──┘
 ```
 
 **核心术语 Key Terms:**
@@ -241,8 +231,8 @@ ESP32-S3 最小系统所需外围:
 1. **完成练习原理图**：ESP32-S3 最小系统外围 + 至少 3 个自定义封装
 2. **截图提交**：原理图全貌 + ERC 检查通过截图
 3. **回答思考题**：
-   - 4 层板相比 2 层板有什么优势？为什么本项目需要 4 层板？
-   - 过孔有哪些类型？各适用于什么场景？
+   - 双层板靠什么给信号提供回流路径？为什么底层铺地铜很重要？
+   - 过孔有哪些类型？双层板用哪种？
    - 为什么去耦电容要尽量靠近 IC 的电源引脚？
 
 ---

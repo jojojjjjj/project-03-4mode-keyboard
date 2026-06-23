@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+# ==============================================================================
+# ⚠️ 教学模拟桩 | TEACHING SIMULATION STUB — NOT BURNABLE FIRMWARE
+# 纯 Python 演示 USB HID 报告格式，不能烧进 ESP32-S3。
+# 真键盘 USB HID 固件见 day-16~17 的 ESP-IDF + TinyUSB (C) 代码。
+# Pure-Python demo of USB HID report format, NOT flashable to ESP32-S3.
+# Real keyboard USB HID firmware is the ESP-IDF + TinyUSB (C) code in day-16~17.
+# ==============================================================================
 """
 USB HID 键盘协议模拟模块
 USB HID Keyboard Protocol Simulation Module

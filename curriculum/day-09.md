@@ -1,10 +1,14 @@
 # Day 09: FOC旋钮模块——硬件 | FOC Knob Module — Hardware
 
+> **夏令营体验档说明**：FOC 是大学电机控制课的内容，今天只要求"跟 SimpleFOC 教程跑通 + 能说清为什么旋钮有档位感"，不要求手写 Clarke/Park 数学变换或自己搭控制环。SimpleFOC 库已经把数学包好了。
+>
+> **Experiential bar**: FOC is university-level. Today you only need to "follow SimpleFOC tutorial to make it run" and explain why the knob has detents — no hand-derived Clarke/Park math, no self-built control loop. SimpleFOC wraps the math.
+
 ## 今日目标 | Today's Goals
-- 理解无刷直流电机（BLDC）的基本结构和工作原理
-- 掌握简化的FOC（磁场定向控制）概念
-- 学会使用 TMC6300 电机驱动和 SimpleFOC 库
-- 使用 AS5047P 磁编码器实现闭环位置控制
+- 知道无刷直流电机（BLDC）和有刷电机的区别，能说个大概为什么旋钮用无刷
+- **跟教程跑通** SimpleFOC 库的开环旋转（调 API 参数，不写控制环）
+- 体验 AS5047P 磁编码器读角度，理解它为什么是闭环力反馈的关键
+- 用自己的话说清"FOC 为什么能让旋钮有档位感"（CC 理解，非实现）
 
 ## 知识讲解 | Knowledge Lecture (09:15-10:30)
 
@@ -42,8 +46,9 @@ FantasyKB 的旋钮使用一颗 **2204 无刷电机**，搭配 TMC6300 驱动和
 步骤3:  U=断开 V=正  W=负    --> 磁场方向 120度
 ...循环...
 
-FOC控制 = 用数学方法精确计算每个时刻每相需要多少电流
-         使磁场始终与转子垂直 -> 最大力矩
+FOC控制 = 让电机磁场始终垂直于转子磁铁，用最小电流产生最大力矩
+         （数学上叫 Clarke/Park 变换，SimpleFOC 库已经帮你算好了，
+          你不用手推公式，只要调库的 API 参数感受效果）
 ```
 
 #### TMC6300 驱动芯片
@@ -114,12 +119,11 @@ SimpleFOC --+-- BLDCDriver3PWM (驱动对象, TMC6300)
             |
             +-- MagneticSensorSPI (编码器对象, AS5047P)
 
-控制流程:
+控制流程（SimpleFOC 库内部帮你做，你只要调参数）:
 1. 读取编码器角度
-2. 计算目标角度与当前角度的误差
-3. PID控制器计算需要的力矩
-4. FOC算法将力矩转换为三相PWM信号
-5. 驱动TMC6300输出电流到电机
+2. PID 控制器根据目标角度与当前角度的误差算出需要的力矩
+3. FOC 算法把力矩转换成三相 PWM 信号（Clarke/Park 变换，库内部完成）
+4. 驱动 TMC6300 输出电流到电机
 ```
 
 ---
@@ -349,7 +353,7 @@ void loop_with_detents(void)
 ## 日终总结 | Daily Wrap-up (16:30-17:00)
 
 **今日关键要点：**
-1. 无刷电机通过3组线圈按特定顺序通电来旋转，FOC算法精确控制每相电流
+1. 无刷电机靠 3 组线圈按顺序通电旋转磁场，FOC 让磁场始终垂直转子以用最小电流出最大力矩（数学库已包好）
 2. TMC6300 是低压BLDC驱动器，通过6路PWM控制三相桥
 3. AS5047P 磁编码器通过检测磁铁方向精确测量角度（14位分辨率）
 4. SimpleFOC 库将复杂的FOC算法封装为简洁的API——初始化+move()即可控制

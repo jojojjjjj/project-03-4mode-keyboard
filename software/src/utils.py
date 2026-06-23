@@ -1,4 +1,10 @@
 # -*- coding: utf-8 -*-
+# ==============================================================================
+# ⚠️ 教学模拟桩 | TEACHING SIMULATION STUB — NOT BURNABLE FIRMWARE
+# 教学演示用的工具函数（配置加载、位操作、CRC 等），跑在 PC 上，不是固件。
+# Utility helpers for the Python teaching demos (config, bit ops, CRC); runs on
+# PC, NOT firmware.
+# ==============================================================================
 """
 工具函数模块
 Utility Functions Module

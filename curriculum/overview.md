@@ -3,9 +3,13 @@
 ## 项目名称 | Project Name
 **4模式机械键盘 "幻想键盘"** | **4-Mode Mechanical Keyboard "FantasyKB"**
 
-> 支持WIFI的4模机械键盘（USB、蓝牙BLE、WiFi、2.4GHz ESP-NOW），搭载可拆卸FOC无刷电机旋钮屏（支持SurfaceDial），支持多功能磁吸扩展（例如小键盘等），支持语音交互。
+> **夏令营主线 = 精简档纯键盘**：1 颗 ESP32-S3 + 按键扫描 + USB HID + 一种无线 + RGB，PCB 收到 1 块双层板学生手焊，成本 < ¥500。FOC 旋钮/语音/磁吸扩展等列为可选进阶，全配档仅作高配参考。
 >
-> A 4-mode mechanical keyboard supporting USB, Bluetooth BLE, WiFi, and 2.4GHz ESP-NOW, with a detachable FOC knob display (SurfaceDial compatible), magnetic expansion modules (e.g., numpad), and voice interaction.
+> **Summer-camp main line = simplified pure keyboard**: 1× ESP32-S3 + key scan + USB HID + one wireless + RGB, PCB shrunk to 1 double-layer board student-soldered, cost < ¥500. The FOC knob / voice / magnetic expansion are optional/advanced; the full tier is a high-end reference only.
+
+> 支持WIFI的4模机械键盘（USB、蓝牙BLE、WiFi、2.4GHz ESP-NOW），搭载可拆卸FOC无刷电机旋钮屏（支持SurfaceDial，可选进阶），支持多功能磁吸扩展（例如小键盘等，可选），支持语音交互（可选）。
+>
+> A 4-mode mechanical keyboard supporting USB, Bluetooth BLE, WiFi, and 2.4GHz ESP-NOW, with a detachable FOC knob display (SurfaceDial compatible, optional/advanced), magnetic expansion modules (e.g., numpad, optional), and voice interaction (optional).
 
 **开源参考项目 | Open-Source Reference:** https://oshwhub.com/ran-pang/multifunctional-keyboard
 
@@ -23,10 +27,10 @@ Over 20 intensive days, students will build a fully functional 4-mode mechanical
 4. **无线通信系统** — 掌握蓝牙BLE（GAP/GATT）、WiFi STA/AP、ESP-NOW三种无线模式的工作原理
 5. **USB子系统** — 理解USB HID协议、USB Hub拓扑、USB-TTL桥接器工作原理
 6. **电源管理** — 掌握锂电池充电（TP4056）、DC-DC升压（HX3608）、LDO稳压（ME6217）等电源架构
-7. **音频子系统** — 理解I2S数字音频接口、ADC/DAC编解码器（ES7210/ES8311）、麦克风阵列基础
-8. **PCB设计** — 使用嘉立创EDA完成12块PCB的原理图绘制与PCB布局（4层板设计）
-9. **电机控制与力反馈** — 理解FOC无刷电机控制（TMC6300）、磁编码器（AS5047P）、压力传感（HX711）
-10. **嵌入式GUI开发** — 使用LVGL在圆形LCD（GC9A01）上开发现代化用户界面
+7. **音频子系统** — 理解I2S数字音频接口、ADC/DAC编解码器（ES7210/ES8311）——列为全配档参考，主线不做
+8. **PCB设计** — 使用嘉立创EDA跟教程走通1块双层主控板的原理图与布局（主线），了解四层板概念（全配档参考）
+9. **电机控制与力反馈** — 理解FOC无刷电机控制（TMC6300）、磁编码器（AS5047P）、压力传感（HX711）——列为可选进阶，主线跟SimpleFOC教程跑通+理解原理即可
+10. **嵌入式GUI开发** — 使用LVGL在圆形LCD（GC9A01）上开发现代化用户界面（旋钮模块，可选进阶）
 
 ---
 
@@ -34,7 +38,7 @@ Over 20 intensive days, students will build a fully functional 4-mode mechanical
 
 ```
 阶段一 (Day 1-5)               阶段二 (Day 6-10)             阶段三 (Day 11-15)
-电子基础与ESP32-S3入门          子系统原型验证                 PCB设计（12块板）
+电子基础与ESP32-S3入门          子系统原型验证                 PCB设计（主线1块双层板）
 ┌───────────────────┐          ┌───────────────────┐         ┌───────────────────┐
 │ Day 1: 电子学基础   │          │ Day 6:  蓝牙BLE    │         │ Day 11: EDA工具    │
 │ Day 2: ESP32-S3    │  ──>    │ Day 7:  WiFi/ESP-NOW│  ──>   │ Day 12: 主控板原理图│
@@ -42,7 +46,7 @@ Over 20 intensive days, students will build a fully functional 4-mode mechanical
 │ Day 4: I2C与音频    │          │ Day 9:  FOC旋钮硬件 │         │ Day 14: PCB布局布线 │
 │ Day 5: USB与电源    │          │ Day 10: FOC旋钮显示 │         │ Day 15: DRC与打样   │
 └───────────────────┘          └───────────────────┘         └───────────────────┘
-     面包板原型                     无线+外设验证                   12块PCB设计
+     面包板原型                     无线+外设验证                   双层PCB设计
 
                                           │
                                           v
@@ -93,7 +97,7 @@ Over 20 intensive days, students will build a fully functional 4-mode mechanical
 | WS2812B RGB灯效与功耗管理 | Day 8 | 自定义灯效编程 |
 | FOC无刷电机控制与磁编码器 | Day 9 | 位置控制实验 |
 | 嵌入式GUI（LVGL）与力反馈 | Day 10 | 旋钮界面演示 |
-| PCB设计流程（原理图→Gerber） | Day 11-15 | 12块PCB设计文件 |
+| PCB设计流程（原理图→Gerber） | Day 11-15 | 1块双层主控板设计文件 |
 | ESP-IDF固件架构与键盘扫描 | Day 16-18 | 编译成功的固件 |
 
 ### 技能维度 Skills
@@ -101,7 +105,7 @@ Over 20 intensive days, students will build a fully functional 4-mode mechanical
 - 使用万用表测量电压、电流、通断
 - 在面包板上搭建和调试复杂电路
 - 使用逻辑分析仪或示波器观察SPI/I2C/I2S信号
-- 使用嘉立创EDA绘制原理图和多层PCB（含4层板阻抗控制）
+- 使用嘉立创EDA绘制原理图和双层PCB（主线，跟教程跑通；四层板阻抗控制为全配档参考）
 - 编写ESP-IDF固件（C语言），实现键盘扫描与多模式通信
 - 配置和使用I2S音频编解码器（ES7210/ES8311）
 - 使用SimpleFOC库控制无刷电机，实现力反馈旋钮

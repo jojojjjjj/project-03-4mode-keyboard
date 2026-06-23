@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+# ==============================================================================
+# ⚠️ 教学模拟桩 | TEACHING SIMULATION STUB — NOT BURNABLE FIRMWARE
+# 纯 Python 演示，帮你理解 74HC165 移位扫描的位操作过程，不能烧进 ESP32-S3。
+# 真扫描固件见 day-16 的 ESP-IDF (C) 代码。
+# Pure-Python demo of the 74HC165 shift-scan bit operations, NOT flashable to
+# ESP32-S3. Real scanning firmware is the ESP-IDF (C) code in day-16.
+# ==============================================================================
 """
 74HC165 移位寄存器键扫描模拟模块
 74HC165 Shift Register Key Scanning Simulation Module

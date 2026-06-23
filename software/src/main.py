@@ -1,4 +1,12 @@
 # -*- coding: utf-8 -*-
+# ==============================================================================
+# ⚠️ 教学模拟桩 | TEACHING SIMULATION STUB — NOT BURNABLE FIRMWARE
+# 这是所有 Python 教学模块的入口，跑在 PC 上演示各子系统的原理，
+# 不是 ESP32-S3 固件。真键盘固件请看 day-16~18 的 ESP-IDF (C) 示例。
+# Entry point for the Python teaching demos, runs on your PC to illustrate
+# each subsystem's principle. NOT ESP32-S3 firmware — real keyboard firmware
+# is the ESP-IDF (C) code in day-16~18.
+# ==============================================================================
 """
 4模式机械键盘 "幻想键盘" 主程序
 4-Mode Mechanical Keyboard "FantasyKB" Main Entry Point

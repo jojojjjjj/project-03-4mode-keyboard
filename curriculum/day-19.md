@@ -1,12 +1,12 @@
 # Day 19: 焊接与组装 | Soldering & Assembly
 
 > **今日目标 Today's Goals:**
-> - 掌握 SMD 贴片焊接技术（0805 电阻电容、QFN 芯片）
-> - 使用钢网和锡膏进行回流焊接
-> - 焊接键盘主控板所有元件
-> - 焊接子板并完成整体组装
+> - 掌握通孔焊接 + 0603/0805 简单贴片焊接（主线主控板，无 QFN）
+> - 焊接键盘主控板所有元件（ESP32-S3 模组 + 74HC165 + 通孔 + 简单贴片）
+> - 完成轴座/轴体/键帽安装与外壳组装
+> - （可选）了解 QFN 回流焊工艺（全配档参考）
 >
-> **产出 Deliverable:** 焊接完成的全部 PCB + 初步组装的键盘
+> **产出 Deliverable:** 焊接完成的主控板 + 初步组装的键盘
 
 ---
 
@@ -30,9 +30,9 @@
 
 ### 为什么要学这个? | Why Learn This?
 
-本项目的 12 块 PCB 上有大量贴片元件（SMD）——电阻电容（0805 封装）、IC 芯片（QFN 封装）、LED（WS2812B 2020 封装）。与 Day 10 的通孔焊接不同，贴片焊接需要更精细的操作和不同的工具（锡膏、钢网、热风枪或回流焊）。掌握 SMD 焊接是从"爱好者"进阶到"工程师"的关键技能。
+本课程主线的主控板是双层板，元件以通孔（轴座、Type-C、排针）+ 0603/0805 简单贴片（电阻电容）+ SOIC 封装 IC（74HC165）为主，没有 QFN——高中生手焊完全可完成。全配档的 QFN 芯片（旋钮/音频/Hub）焊接列为可选进阶，可用嘉立创 SMT 代工。
 
-This project's 12 PCBs have many SMD components — 0805 passives, QFN ICs, WS2812B LEDs. Unlike through-hole soldering (Day 10), SMD requires finer techniques and different tools. Mastering SMD is key to advancing from "hobbyist" to "engineer."
+The main-line mainboard is a double-layer board with through-hole parts (switch sockets, Type-C, headers) + 0603/0805 simple SMD (resistors/caps) + SOIC ICs (74HC165) — no QFN, so high-school students can solder it by hand. Full-tier QFN chips (knob/audio/hub) are optional/advanced, doable via JLCPCB SMT service.
 
 ---
 
@@ -124,28 +124,26 @@ ES7210 / ES8311:
 **焊接顺序 Soldering Order:**
 
 ```
-主控板焊接清单 Mainboard Soldering Checklist:
+主控板焊接清单 Mainboard Soldering Checklist (主线精简档):
 
-第一轮: 锡膏 + 回流焊 (所有贴片元件)
+第一轮: 烙铁手焊 (通孔 + 简单贴片，无 QFN)
+  [ ] 74HC165 x 6 (移位寄存器, SOIC-16) — 烙铁可焊
   [ ] TP4056 (充电 IC, SOT-23-5)
-  [ ] HX3608 (升压 IC, SOT-23-6)
   [ ] ME6217 (LDO, SOT-23-5)
-  [ ] SL2.1A (USB Hub, QFN-28) ← 需要回流焊
-  [ ] CH342F (USB-TTL, SOP-16)
-  [ ] GL823K (读卡器, QFN-24) ← 需要回流焊
-  [ ] 74HC165 x 10 (移位寄存器, SOIC-16)
-  [ ] 100nF 电容 x 20+ (0805)
-  [ ] 10uF 电容 x 4 (0805)
-  [ ] 电阻 x 15+ (0805)
+  [ ] 100nF 电容 x 10+ (0805)
+  [ ] 10uF 电容 x 2 (0805)
+  [ ] 电阻 x 10+ (0805)
   [ ] LED x 3 (0805: 红/绿/蓝)
 
 第二轮: 烙铁焊接 (较大元件)
   [ ] ESP32-S3-WROOM-1 模块 (排针/焊盘)
   [ ] USB Type-C 母座 (16P)
-  [ ] 磁吸连接器 (Pogo Pin)
-  [ ] 热插拔轴座 x 80
-  [ ] WS2812B x 20 (2020 封装)
+  [ ] 热插拔轴座 x 45
+  [ ] WS2812B x 45 (5050 封装)
   [ ] 排针排母 (扩展接口)
+
+> 主线无 QFN 芯片（旋钮 TMC6300/AS5047P、音频 ES7210/ES8311、Hub SL2.1A/GL823K 已砍掉）。
+> 想做全配档 QFN 的同学另用嘉立创 SMT 代工，不要求手焊。
 ```
 
 ---

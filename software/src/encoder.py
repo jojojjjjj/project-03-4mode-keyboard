@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+# ==============================================================================
+# ⚠️ 教学模拟桩 | TEACHING SIMULATION STUB — NOT BURNABLE FIRMWARE
+# 纯 Python 演示 AS5047P 角度读取原理，不能烧进 ESP32-S3。
+# 真编码器固件见 day-09 的 SimpleFOC (C) 代码。
+# Pure-Python demo of AS5047P angle reading, NOT flashable to ESP32-S3.
+# Real encoder firmware is the SimpleFOC (C) code in day-09.
+# ==============================================================================
 """
 AS5047P 磁编码器模拟模块
 AS5047P Magnetic Encoder Simulation Module

@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+# ==============================================================================
+# ⚠️ 教学模拟桩 | TEACHING SIMULATION STUB — NOT BURNABLE FIRMWARE
+# 纯 Python 演示 GC9A01 显示原理，不能烧进 ESP32-S3。真 LVGL/显示固件见
+# day-10 的 C 代码和参考仓库 X-Knob。
+# Pure-Python demo of GC9A01 display principles, NOT flashable to ESP32-S3.
+# Real display/LVGL firmware is the C code in day-10 and the X-Knob repo.
+# ==============================================================================
 """
 GC9A01 圆形 LCD 驱动模拟模块
 GC9A01 Round LCD Driver Simulation Module

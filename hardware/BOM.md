@@ -11,6 +11,29 @@
 
 ## 项目总预算 | Project Total Budget
 
+> **本课程采用精简档**（纯键盘主线：1 颗 ESP32-S3 + 按键扫描 + USB HID + 一种无线 + RGB），砍掉 FOC 旋钮、音频、USB Hub、接收器等子系统，PCB 从 12 块收到 1-2 块双层板，SMT 改为学生手焊通孔 + 简单贴片。精简档总价压在 ¥500 以内，符合夏令营成本约束。全配档（含旋钮/音频/12 块 PCB）约 ¥1,028，仅作高配参考。
+>
+> **This course uses the simplified tier** (pure-keyboard main line: 1× ESP32-S3 + key scan + USB HID + one wireless + RGB), dropping the FOC knob, audio, USB Hub, and receiver subsystems, shrinking PCBs from 12 to 1-2 double-layer boards, and replacing SMT with student through-hole + simple SMD soldering. Simplified total is under ¥500, meeting the summer-camp cost constraint. The full tier (~¥1,028) is kept as a high-end reference only.
+
+### 精简档预算（本课程主线）| Simplified-tier Budget (course main line)
+
+| 类别 Category | 子系统 Subsystem | 金额 Amount (CNY) |
+|---|---|---|
+| 主控与有源器件 | Main ICs & Active Components | 48.50 |
+| 接收器元器件 | Receiver Components | 0.00 |
+| LED 与光电器件 | LEDs & Optoelectronics | 13.00 |
+| 连接器与线缆 | Connectors & Cables | 12.00 |
+| 被动元件 | Passive Components | 12.00 |
+| 机电元件 | Electromechanical (switches, keycaps, etc.) | 192.00 |
+| PCB 制造（1-2 块双层板） | PCB Manufacturing (1-2 double-layer) | 20.00 |
+| SMT 贴片 | SMT Assembly | 0.00 |
+| 3D 打印/结构件 | 3D Printing / Structural | 65.00 |
+| 线缆与杂项 | Cables & Misc | 18.00 |
+| 工具（共用） | Tools (shared) | 12.00 |
+| **精简档总计 Simplified Total** | | **¥392.50** |
+
+### 全配档预算（高配参考，非本课程主线）| Full-tier Budget (reference only)
+
 | 类别 Category | 子系统 Subsystem | 金额 Amount (CNY) |
 |---|---|---|
 | 主控与有源器件 | Main ICs & Active Components | 88.50 |
@@ -25,14 +48,49 @@
 | 3D 打印/结构件 | 3D Printing / Structural | 105.00 |
 | 线缆与杂项 | Cables & Misc | 28.00 |
 | 工具（共用） | Tools (shared) | 12.00 |
-| **总计 Grand Total** | | **¥1,027.75** |
+| **全配档总计 Full Total** | | **¥1,027.75** |
 
-> 预算说明：本项目为高集成度客制化键盘，包含 12 块 PCB、FOC 旋钮、音频系统、无线接收器等子系统。
-> Budget note: This is a highly integrated custom keyboard with 12 PCBs, FOC knob, audio system, and wireless receiver subsystems.
+> 预算说明：精简档为本课程实际采购方案（纯键盘，<¥500）。全配档含 FOC 旋钮、音频系统、USB Hub、12 块 PCB 等子系统，仅作高配参考。
+> Budget note: the simplified tier is the actual purchasing plan for this course (pure keyboard, <¥500). The full tier includes the FOC knob, audio system, USB Hub, and 12 PCBs, kept as a high-end reference.
 
 ---
 
-## 完整物料清单 | Full BOM
+## 精简档实际采购清单（本课程主线）| Simplified-tier Shopping List (course main line)
+
+> 以下为本课程实际采购的精简清单。砍掉 FOC 旋钮、音频、USB Hub、接收器子系统，1 颗 ESP32-S3 走原生 USB HID，PCB 收到 1 块双层主控板（+1 块小板），学生手焊通孔 + 简单贴片。
+
+| 编号 No. | 元件 Component | 型号 Specification | 数量 Qty | 单价 Unit (CNY) | 小计 Subtotal | 备注 Notes |
+|---|---|---|---|---|---|---|
+| 1 | 键盘主控 MCU | ESP32-S3-WROOM-1-N16R8 | 1 | 32.00 | 32.00 | 16MB Flash+8MB PSRAM，原生 USB HID |
+| 2 | 移位寄存器 | 74HC165 (SOP-16) | 6 | 0.60 | 3.60 | 6 片级联覆盖 45 键 |
+| 3 | LDO 稳压器 | ME6217C33M5G (SOT-23-5) | 1 | 0.80 | 0.80 | 3.3V LDO |
+| 4 | 锂电充电 IC | TP4056 (SOP-8) | 1 | 0.80 | 0.80 | 单节锂电池充电 |
+| 5 | 电池保护 | DW01 + FS8205A | 1 set | 0.80 | 0.80 | 过充/过放保护 |
+| 6 | USB 转串口 | CH342F | 1 | 5.00 | 5.00 | 固件下载调试（可选，用 ESP32-S3 原生 USB 也可省）|
+| 7 | RGB LED | WS2812B 5050 | 50 | 0.25 | 12.50 | 45 键背光 + 余量 |
+| 8 | USB Type-C 母座 | 16P 全针脚 | 1 | 1.00 | 1.00 | 主 USB 口 |
+| 9 | 排针/排母/PH2.0 | 其他连接器 | 1 lot | — | 5.00 | 批量采购 |
+| 10 | 被动元件 | 电阻/电容/电感/二极管 | 1 lot | — | 12.00 | 0603/0805 通孔易焊 |
+| 11 | 机械轴体 | Gateron G Pro 3.0 | 45 | 2.00 | 90.00 | 红/青/茶/黄轴 |
+| 12 | 热插拔轴座 | Kailh 热插拔插座 | 45 | 0.80 | 36.00 | MX 兼容 |
+| 13 | PBT 键帽套装 | 45 键配列 | 1 set | 45.00 | 45.00 | 精简配列 |
+| 14 | 卫星轴 | PCB 卫星轴套装 | 1 set | 15.00 | 15.00 | 空格/Shift/Enter |
+| 15 | 锂电池 | 3000mAh 103040 聚合物 | 1 | 25.00 | 25.00 | 主电池（可选，USB 供电可省）|
+| 16 | 轻触开关/按钮 | 6x6mm 贴片 | 2 | 1.00 | 2.00 | 复位/Boot |
+| 17 | PCB 制造 | 双层板 1 块（+1 小板）| 1-2 | 20.00 | 20.00 | 双层板，学生手焊 |
+| 18 | 3D 打印/结构件 | 底壳+定位板 | 1 set | 65.00 | 65.00 | FDM 打印 |
+| 19 | 线缆与杂项 | FPC/硅胶线/螺丝/脚垫 | 1 lot | 18.00 | 18.00 | — |
+| 20 | 工具消耗品 | 焊锡/助焊剂（共用）| — | 12.00 | 12.00 | 教室共用 |
+| | **精简档合计 Simplified Total** | | | | **¥401.50** | |
+
+> 精简档不使用 SMT 代工——主控板用双层板，ESP32-S3 模组 + 74HC165 + 通孔元件全部学生手焊，QFN 封装 IC 已移除（无旋钮/音频/Hub 芯片）。
+> No SMT service in the simplified tier: the double-layer mainboard is student-soldered (ESP32-S3 module + 74HC165 + through-hole parts); QFN ICs are removed (no knob/audio/hub chips).
+
+---
+
+## 全配档物料清单（高配参考，非本课程主线）| Full-tier BOM (reference only)
+
+> 下表为全配档完整 BOM（含 FOC 旋钮、音频、USB Hub、12 块 PCB、SMT 代工），仅作高配参考。本课程实际采购用上面的精简档清单。
 
 ### 一、主控与有源器件（键盘）| Main ICs & Active Components (Keyboard)
 
@@ -75,7 +133,7 @@
 
 > **说明 Notes:**
 > - 旋钮模块为独立子系统，自带 ESP32-S3 主控（表第 2 项），通过磁吸 pogo pin 与键盘连接。
-> - TMC6300 + AS507P + 云台电机实现 FOC 力反馈，结合 LVGL 显示 UI（类似 SmartKnob）。
+> - TMC6300 + AS5047P + 云台电机实现 FOC 力反馈，结合 LVGL 显示 UI（类似 SmartKnob）。
 > - 应变计配合 HX711 检测旋钮按压方向与力度。
 
 ---
