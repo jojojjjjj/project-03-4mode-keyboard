@@ -1,11 +1,12 @@
 # 课程概述 | Course Overview
+<!-- 注：价格信息已注释隐藏（查价不准确，仅作参考不严谨）/ Note: price info commented out (inaccurate, not rigorous as reference) -->
 
 ## 项目名称 | Project Name
 **4模式机械键盘 "幻想键盘"** | **4-Mode Mechanical Keyboard "FantasyKB"**
 
-> **夏令营主线 = 精简档纯键盘**：1 颗 ESP32-S3 + 按键扫描 + USB HID + 一种无线 + RGB，PCB 收到 1 块双层板学生手焊，成本 < ¥500。FOC 旋钮/语音/磁吸扩展等列为可选进阶，全配档仅作高配参考。
+> **夏令营主线 = 精简档纯键盘**：1 颗 ESP32-S3 + 按键扫描 + USB HID + 一种无线 + RGB，PCB 收到 1 块双层板学生手焊<!-- 成本 < ¥500 -->。FOC 旋钮/语音/磁吸扩展等列为可选进阶，全配档仅作高配参考。
 >
-> **Summer-camp main line = simplified pure keyboard**: 1× ESP32-S3 + key scan + USB HID + one wireless + RGB, PCB shrunk to 1 double-layer board student-soldered, cost < ¥500. The FOC knob / voice / magnetic expansion are optional/advanced; the full tier is a high-end reference only.
+> **Summer-camp main line = simplified pure keyboard**: 1× ESP32-S3 + key scan + USB HID + one wireless + RGB, PCB shrunk to 1 double-layer board student-soldered<!-- cost < ¥500 -->. The FOC knob / voice / magnetic expansion are optional/advanced; the full tier is a high-end reference only.
 
 > 支持WIFI的4模机械键盘（USB、蓝牙BLE、WiFi、2.4GHz ESP-NOW），搭载可拆卸FOC无刷电机旋钮屏（支持SurfaceDial，可选进阶），支持多功能磁吸扩展（例如小键盘等，可选），支持语音交互（可选）。
 >

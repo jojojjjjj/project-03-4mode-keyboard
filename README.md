@@ -1,4 +1,5 @@
 # 4模式机械键盘 "幻想键盘" | 4-Mode Mechanical Keyboard "FantasyKB"
+<!-- 注：价格信息已注释隐藏（查价不准确，仅作参考不严谨）/ Note: price info commented out (inaccurate, not rigorous as reference) -->
 
 > **本项目基于开源项目 [承载我所有幻想的键盘](https://oshwhub.com/ran-pang/multifunctional-keyboard)（原作者：[蓝星多面体](https://space.bilibili.com/3546587666057417)）改编，已获得原作者授权用于教学目的。**
 >
@@ -15,9 +16,9 @@
 
 ## 项目简介 | Project Overview
 
-> **夏令营主线 = 精简档纯键盘**：1 颗 ESP32-S3 + 按键扫描 + USB HID + 一种无线 + RGB，PCB 收到 1-2 块双层板学生手焊，成本 < ¥500。FOC 旋钮、语音、USB Hub、磁吸扩展等列为**可选进阶**，全配档仅作高配参考。下面先描述主线，再列全配档的完整功能。
+> **夏令营主线 = 精简档纯键盘**：1 颗 ESP32-S3 + 按键扫描 + USB HID + 一种无线 + RGB，PCB 收到 1-2 块双层板学生手焊<!-- 成本 < ¥500 -->。FOC 旋钮、语音、USB Hub、磁吸扩展等列为**可选进阶**，全配档仅作高配参考。下面先描述主线，再列全配档的完整功能。
 >
-> **Summer-camp main line = simplified pure keyboard**: 1× ESP32-S3 + key scan + USB HID + one wireless + RGB, PCB shrunk to 1-2 double-layer boards student-soldered, cost < ¥500. The FOC knob, voice, USB Hub, and magnetic expansion are **optional/advanced**; the full tier is a high-end reference only. The main line is described first, then the full feature set.
+> **Summer-camp main line = simplified pure keyboard**: 1× ESP32-S3 + key scan + USB HID + one wireless + RGB, PCB shrunk to 1-2 double-layer boards student-soldered<!-- cost < ¥500 -->. The FOC knob, voice, USB Hub, and magnetic expansion are **optional/advanced**; the full tier is a high-end reference only. The main line is described first, then the full feature set.
 
 ### 主线（精简档，本课程实际目标）| Main line (simplified tier, actual course target)
 
@@ -218,6 +219,7 @@ This project includes 12 PCBs: 4 four-layer boards + 8 two-layer boards.
 
 ---
 
+<!-- 注：价格信息已注释隐藏（查价不准确，仅作参考不严谨）/ Note: price info commented out (inaccurate, not rigorous as reference)
 ## 预算总览 | Budget Summary
 
 > **本课程采用精简档（主线 < ¥500）**：砍掉 FOC 旋钮、音频、USB Hub、接收器子系统，1 颗 ESP32-S3 走原生 USB HID，PCB 收到 1-2 块双层板，学生手焊通孔 + 简单贴片。全配档约 ¥1,028 仅作高配参考。
@@ -254,32 +256,33 @@ This project includes 12 PCBs: 4 four-layer boards + 8 two-layer boards.
 | 3D 打印/结构件 3D Printing / Structural                | ¥105.00              | 外壳、旋钮壳体、定位板                                       |
 | 线材及杂项 Cables & Misc                               | ¥28.00               | FPC 排线、杜邦线、螺丝等                                     |
 | **全配档总计 Full Total**                              | **~¥1,027.75**       | 高配参考，非本课程主线                                       |
+-->
 
 ### 核心元器件清单 | Key Component List
 
 | 元件 Component    | 型号/规格 Specification   | 数量 Qty | 参考单价 Unit Price (CNY) | 说明 Notes             |
 | ----------------- | ------------------------- | -------- | ------------------------- | ---------------------- |
-| 主控 MCU (键盘)   | ESP32-S3-WROOM-1-N16R8    | 1        | 25.00                     | 16MB Flash + 8MB PSRAM |
-| 主控 MCU (旋钮)   | ESP32-S3-WROOM-1-N16R8    | 1        | 25.00                     | 同上                   |
-| 主控 MCU (接收器) | ESP32-S3-WROOM-1-N16R8    | 1        | 25.00                     | 同上                   |
-| 移位寄存器        | 74HC165                   | 10       | 0.80                      | SPI 菊花链按键扫描     |
-| 音频 ADC          | ES7210                    | 1        | 5.00                      | 4 通道 I2S ADC         |
-| 音频 DAC          | ES8311                    | 1        | 3.50                      | I2S DAC                |
-| 音频功放          | NS4150B                   | 2        | 1.50                      | 3W D 类功放            |
-| USB Hub           | SL2.1A                    | 1        | 3.00                      | 4 口 USB 2.0           |
-| USB-TTL           | CH342F                    | 1        | 4.00                      | 双通道 USB 转串口      |
-| USB 存储          | GL823K                    | 1        | 2.50                      | U 盘模拟               |
-| LCD 驱动          | GC9A01                    | 1        | 12.00                     | 1.28" 240x240 圆形屏   |
-| 电机驱动          | TMC6300                   | 1        | 15.00                     | 三相 BLDC 驱动         |
-| 磁编码器          | AS5047P                   | 1        | 18.00                     | 14 位 SPI 磁编码器     |
-| 压力传感器        | HX711                     | 1        | 3.00                      | 24 位 ADC              |
-| RGB LED           | WS2812B-5050              | 95       | 0.26                      | 可寻址 RGB LED         |
-| 机械轴体          | 佳达隆 G Pro 3.0 (或等同) | ~75      | 2.50                      | 可选红/青/茶轴         |
-| 热插拔轴座        | Kailh 热插拔底座          | ~75      | 0.50                      | MX 兼容                |
-| 充电管理          | TP4056                    | 1        | 0.50                      | 锂电池充电             |
-| 升压芯片          | HX3608                    | 1        | 1.00                      | 升压至 5V              |
-| LDO               | ME6217 (3.3V)             | 3        | 0.50                      | 低压差线性稳压器       |
-| 电池保护          | DW01 + FS8205A            | 1 套     | 0.50                      | 旋钮锂电保护           |
+| 主控 MCU (键盘)   | ESP32-S3-WROOM-1-N16R8    | 1        | <!-- 25.00 -->                     | 16MB Flash + 8MB PSRAM |
+| 主控 MCU (旋钮)   | ESP32-S3-WROOM-1-N16R8    | 1        | <!-- 25.00 -->                     | 同上                   |
+| 主控 MCU (接收器) | ESP32-S3-WROOM-1-N16R8    | 1        | <!-- 25.00 -->                     | 同上                   |
+| 移位寄存器        | 74HC165                   | 10       | <!-- 0.80 -->                      | SPI 菊花链按键扫描     |
+| 音频 ADC          | ES7210                    | 1        | <!-- 5.00 -->                      | 4 通道 I2S ADC         |
+| 音频 DAC          | ES8311                    | 1        | <!-- 3.50 -->                      | I2S DAC                |
+| 音频功放          | NS4150B                   | 2        | <!-- 1.50 -->                      | 3W D 类功放            |
+| USB Hub           | SL2.1A                    | 1        | <!-- 3.00 -->                      | 4 口 USB 2.0           |
+| USB-TTL           | CH342F                    | 1        | <!-- 4.00 -->                      | 双通道 USB 转串口      |
+| USB 存储          | GL823K                    | 1        | <!-- 2.50 -->                      | U 盘模拟               |
+| LCD 驱动          | GC9A01                    | 1        | <!-- 12.00 -->                     | 1.28" 240x240 圆形屏   |
+| 电机驱动          | TMC6300                   | 1        | <!-- 15.00 -->                     | 三相 BLDC 驱动         |
+| 磁编码器          | AS5047P                   | 1        | <!-- 18.00 -->                     | 14 位 SPI 磁编码器     |
+| 压力传感器        | HX711                     | 1        | <!-- 3.00 -->                      | 24 位 ADC              |
+| RGB LED           | WS2812B-5050              | 95       | <!-- 0.26 -->                      | 可寻址 RGB LED         |
+| 机械轴体          | 佳达隆 G Pro 3.0 (或等同) | ~75      | <!-- 2.50 -->                      | 可选红/青/茶轴         |
+| 热插拔轴座        | Kailh 热插拔底座          | ~75      | <!-- 0.50 -->                      | MX 兼容                |
+| 充电管理          | TP4056                    | 1        | <!-- 0.50 -->                      | 锂电池充电             |
+| 升压芯片          | HX3608                    | 1        | <!-- 1.00 -->                      | 升压至 5V              |
+| LDO               | ME6217 (3.3V)             | 3        | <!-- 0.50 -->                      | 低压差线性稳压器       |
+| 电池保护          | DW01 + FS8205A            | 1 套     | <!-- 0.50 -->                      | 旋钮锂电保护           |
 
 ---
 
@@ -565,21 +568,21 @@ Partial completion is graded proportionally. Key scanning + USB wired alone can 
 
 ### 关于预算 | About Budget
 
-**Q: 预算能控制在 500 元内吗？**
-A: 能。本课程默认走**精简档**（纯键盘主线）：砍掉 FOC 旋钮、音频、USB Hub、接收器子系统，1 颗 ESP32-S3 走原生 USB HID，PCB 收到 1-2 块双层板学生手焊。精简档约 ¥400，符合 ¥500 约束。全配档（含旋钮/音频/12 块 PCB/SMT 代工）约 ¥1,028，仅作高配参考。
+**Q: 预算能控制在 <!-- 500 元 -->内吗？**
+A: 能。本课程默认走**精简档**（纯键盘主线）：砍掉 FOC 旋钮、音频、USB Hub、接收器子系统，1 颗 ESP32-S3 走原生 USB HID，PCB 收到 1-2 块双层板学生手焊。精简档约 <!-- ¥400 -->，符合 <!-- ¥500 -->约束。全配档（含旋钮/音频/12 块 PCB/SMT 代工）约 <!-- ¥1,028 -->，仅作高配参考。
 
-Yes. The course defaults to the **simplified tier** (pure-keyboard main line): drops the FOC knob, audio, USB Hub, and receiver; 1× ESP32-S3 with native USB HID; 1-2 double-layer PCBs student-soldered. The simplified tier is ~¥400, meeting the ¥500 constraint. The full tier (~¥1,028) is a high-end reference only.
+Yes. The course defaults to the **simplified tier** (pure-keyboard main line): drops the FOC knob, audio, USB Hub, and receiver; 1× ESP32-S3 with native USB HID; 1-2 double-layer PCBs student-soldered. The simplified tier is ~<!-- ¥400 -->, meeting the <!-- ¥500 --> constraint. The full tier (~<!-- ¥1,028 -->) is a high-end reference only.
 
 | 精简方案 Simplification         | 节省 Savings | 说明 Description                            |
 | ------------------------------- | ------------ | ------------------------------------------- |
-| 去掉旋钮模块 Remove knob module | -¥82.50     | 不做 FOC 旋钮（本课程主线已默认砍掉）       |
-| 减少到 1 颗 ESP32-S3            | -¥48.00     | 旋钮和接收器 MCU 去掉（主线已默认）         |
-| 去掉音频子系统 Remove audio     | -¥15.00     | 去掉 ES7210/ES8311/NS4150B                  |
-| 简化 PCB 数量 Reduce PCBs       | -¥124.00    | 12 块（含 4 层）→ 1-2 块双层板              |
-| 自己焊接代替 SMT                | -¥125.00    | 手工焊接通孔 + 简单贴片（主线已默认）       |
-| 减少按键数量 Fewer keys (45)    | -¥100.00    | 75 键 → 45 键精简布局                       |
+| 去掉旋钮模块 Remove knob module | <!-- -¥82.50 -->     | 不做 FOC 旋钮（本课程主线已默认砍掉）       |
+| 减少到 1 颗 ESP32-S3            | <!-- -¥48.00 -->     | 旋钮和接收器 MCU 去掉（主线已默认）         |
+| 去掉音频子系统 Remove audio     | <!-- -¥15.00 -->     | 去掉 ES7210/ES8311/NS4150B                  |
+| 简化 PCB 数量 Reduce PCBs       | <!-- -¥124.00 -->    | 12 块（含 4 层）→ 1-2 块双层板              |
+| 自己焊接代替 SMT                | <!-- -¥125.00 -->    | 手工焊接通孔 + 简单贴片（主线已默认）       |
+| 减少按键数量 Fewer keys (45)    | <!-- -¥100.00 -->    | 75 键 → 45 键精简布局                       |
 
-> 精简档实际约 ¥400，详见 hardware/BOM.md「精简档实际采购清单」。Simplified tier is ~¥400; see hardware/BOM.md.
+> 精简档实际约 <!-- ¥400 -->，详见 hardware/BOM.md「精简档实际采购清单」。Simplified tier is ~<!-- ¥400 -->; see hardware/BOM.md.
 
 **Q: 可以多人分摊成本吗？**
 A: 强烈建议 2-3 人组队，分摊物料成本的同时也分担工作量。每人负责不同的子系统（如一人负责键盘、一人负责旋钮、一人负责固件），这在评分中也会体现团队协作能力。
